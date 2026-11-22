@@ -19,8 +19,9 @@ Está dividida en **varias secciones pequeñas** para que sea fácil de mantener
 
 ## Cómo usarla
 
-1. Descarga o copia la carpeta completa (con `css/`, `datos/` y `js/`).
-2. Abre `index.html` con doble clic. No necesita internet, servidor ni instalación.
+**Opción fácil:** descarga solo `coaching-companion.html` y ábrelo con doble clic. Es la herramienta completa en un único archivo; no necesita internet, servidor ni instalación.
+
+**Para editar:** usa la carpeta completa (`index.html` con `css/`, `datos/` y `js/`). Después de cambiar algo, ejecuta `python construir.py` para regenerar `coaching-companion.html`.
 
 El asistente guía la sesión en 5 pasos:
 

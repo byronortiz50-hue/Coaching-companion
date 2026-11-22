@@ -20,7 +20,14 @@
 
   <nav class="pasos" id="pasos" aria-label="Pasos de la sesión"></nav>
 
-  <main id="contenido" class="contenido" tabindex="-1"></main>
+  <main id="contenido" class="contenido" tabindex="-1">
+    <!-- Este aviso solo se ve si no se cargaron los archivos de js/ y datos/. -->
+    <div class="tarjeta alerta">
+      <strong>La herramienta no pudo cargar sus archivos.</strong>
+      Abre <strong>coaching-companion.html</strong> (versión en un solo archivo), o asegúrate de tener junto a este
+      index.html las carpetas <code>css</code>, <code>datos</code> y <code>js</code>.
+    </div>
+  </main>
 
   <footer class="pie" id="pie">
     <button type="button" class="btn btn-sec" id="btn-atras">← Atrás</button>
