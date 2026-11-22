@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coaching Companion</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="marca">
+      <span class="logo" aria-hidden="true">G</span>
+      <div>
+        <h1>Coaching Companion</h1>
+        <p class="sub">Asistente para sesiones de coaching con el modelo GROW</p>
+      </div>
+    </div>
+    <button type="button" class="btn btn-sec" id="btn-nueva">Nueva sesión</button>
+  </header>
+
+  <nav class="pasos" id="pasos" aria-label="Pasos de la sesión"></nav>
+
+  <main id="contenido" class="contenido" tabindex="-1">
+    <!-- Este aviso solo se ve si no se cargaron los archivos de js/ y datos/. -->
+    <div class="tarjeta alerta">
+      <strong>La herramienta no pudo cargar sus archivos.</strong>
+      Abre <strong>coaching-companion.html</strong> (versión en un solo archivo), o asegúrate de tener junto a este
+      index.html las carpetas <code>css</code>, <code>datos</code> y <code>js</code>.
+    </div>
+  </main>
+
+  <footer class="pie" id="pie">
+    <button type="button" class="btn btn-sec" id="btn-atras">← Atrás</button>
+    <span class="aviso-guardado" id="aviso-guardado"></span>
+    <button type="button" class="btn" id="btn-siguiente">Siguiente →</button>
+  </footer>
+
+  <!--
+    Orden de carga:
+    1) datos/   → contenido editable (behaviors, preguntas, causas, estilos)
+    2) js/app.js → estado, navegación y utilidades
+    3) js/pasos/ → una sección por paso del flujo
+    4) js/inicio.js → arranca la aplicación
+    Todo funciona abriendo este archivo directamente (sin servidor).
+  -->
+  <script src="datos/behaviors.js"></script>
+  <script src="datos/preguntas-grow.js"></script>
+  <script src="datos/causas-raiz.js"></script>
+  <script src="datos/estilos-aprendizaje.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/pasos/1-behavior.js"></script>
+  <script src="js/pasos/2-grow.js"></script>
+  <script src="js/pasos/3-causa-raiz.js"></script>
+  <script src="js/pasos/4-ayuda.js"></script>
+  <script src="js/pasos/5-plan-smart.js"></script>
+  <script src="js/inicio.js"></script>
+</body>
+</html>
