@@ -334,7 +334,6 @@ window.CC = window.CC || {};
 
 CC.behaviors = [
   {
-    // PENDIENTE: el primer sub-behavior se veía cortado al final en la foto ("...prior to negotiating a credit / payment, etc"). Confirmar con Manuel.
     id: "visual-audit",
     nombre: "Visual Audit",
     subBehaviors: [
@@ -1069,12 +1068,11 @@ CC.behaviors = [
     ejemplo: false
   },
   {
-    // PENDIENTE: el segundo sub-behavior viene cortado en la herramienta original ("...to ensure YOUR understanding of the"). Confirmar el texto completo con Manuel.
     id: "check-for-understanding",
     nombre: "Check for Understanding",
     subBehaviors: [
       "Ask closed ended questions (yes/no answers) to ensure the customer understands your explanation, and verbally confirm customer's understanding of resolution",
-      "Ask closed ended questions (yes/no answers) to ensure YOUR understanding of the"
+      "Ask closed ended questions (yes/no answers) to ensure YOUR understanding of the issue"
     ],
     descripcion: "Usar preguntas cerradas para confirmar que el cliente entendió y que tú entendiste bien al cliente.",
     preguntas: {
@@ -1129,7 +1127,6 @@ CC.behaviors = [
     ejemplo: false
   },
   {
-    // PENDIENTE: el sub-behavior "Present the most powerful benefits for the individual first when making a Sales" parece cortado en la herramienta original. Confirmar con Manuel.
     id: "act-as-a-consultant",
     nombre: "Act as a Consultant",
     subBehaviors: [
