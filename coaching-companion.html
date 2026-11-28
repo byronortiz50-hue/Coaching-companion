@@ -860,6 +860,242 @@ CC.behaviors = [
     },
     medible: "Onboarding con tarea específica en 9 de 10 ofertas o cambios aceptados monitoreados.",
     ejemplo: false
+  },
+  {
+    id: "negotiate",
+    nombre: "Negotiate",
+    subBehaviors: [
+      "Think through Customer, Employee, Owner impacts when considering goodwill credits, reconnection fees, payment fees, etc. (ex: How many goodwill credits do they already have? How tenured is the account?)",
+      "Use negotiation skills by being transparent with the customer around our policies with payments, fee waivers, and credits when reviewing other bill impacting amounts"
+    ],
+    descripcion: "Negociar créditos, cargos y pagos considerando el impacto en el cliente, el empleado y la compañía, con transparencia sobre las políticas.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría lograr cuando un cliente pide un crédito o que le quiten un cargo?",
+        "¿Cómo sería una negociación en la que ganan el cliente y la compañía?"
+      ],
+      reality: [
+        "¿Qué revisas antes de ofrecer un crédito (créditos previos, tenure)?",
+        "¿Cómo le explicas al cliente las políticas de pagos, waivers y créditos?",
+        "¿Qué haces cuando el cliente insiste y la política no lo permite?"
+      ],
+      options: [
+        "¿Qué preguntas podrías hacerte antes de aplicar un crédito?",
+        "¿Cómo podrías ser transparente sobre la política sin que el cliente lo sienta como un no rotundo?",
+        "¿Qué otra cosa de valor podrías ofrecer en lugar del crédito?"
+      ],
+      way: [
+        "¿Qué vas a revisar siempre antes de negociar?",
+        "¿Cómo vamos a dar seguimiento a tus créditos de esta semana?"
+      ]
+    },
+    medible: "Revisión de impacto y explicación transparente de la política en 9 de 10 negociaciones revisadas.",
+    ejemplo: false
+  },
+  {
+    id: "memo-account",
+    nombre: "Memo Account",
+    subBehaviors: [
+      "Memo the account according to the memo guidelines in Magenta"
+    ],
+    descripcion: "Documentar la cuenta siguiendo las guías de memo en Magenta.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría que el siguiente representante encontrara en tus memos?",
+        "¿Cómo ayudan tus memos a que el cliente no tenga que repetir su historia?"
+      ],
+      reality: [
+        "¿Cuándo escribes el memo: durante o después de la llamada?",
+        "¿Qué información incluyes siempre? ¿Qué se te pasa a veces?",
+        "¿Qué tan familiarizado estás con las guías de memo en Magenta?"
+      ],
+      options: [
+        "¿Qué estructura podrías usar para que tus memos sean completos y rápidos?",
+        "¿Cómo podrías ir documentando mientras hablas con el cliente?"
+      ],
+      way: [
+        "¿Qué vas a incluir siempre en tus memos a partir de hoy?",
+        "¿Cuándo revisamos juntos algunos de tus memos?"
+      ]
+    },
+    medible: "Memos según las guías de Magenta en 10 de 10 cuentas revisadas.",
+    ejemplo: false
+  },
+  {
+    id: "dead-air",
+    nombre: "Dead Air",
+    subBehaviors: [
+      "Share with the customer what you are doing (reviewing, taking action) on their account to set expectations for dead air, and leverage dead air to discover and discuss sales opportunities (AAL, features, etc.)"
+    ],
+    descripcion: "Evitar silencios incómodos explicando al cliente lo que estás haciendo y aprovechar esos momentos para descubrir oportunidades.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría que el cliente viviera los momentos en que trabajas en su cuenta?",
+        "¿Qué podrías lograr si aprovecharas esos silencios?"
+      ],
+      reality: [
+        "¿Qué haces cuando necesitas tiempo para revisar o trabajar en la cuenta?",
+        "En esta llamada, ¿cuánto duraron los silencios y qué crees que pensó el cliente?",
+        "¿Has aprovechado alguna vez ese tiempo para conversar sobre otras necesidades?"
+      ],
+      options: [
+        "¿Qué frase podrías usar para avisar al cliente lo que estás haciendo?",
+        "¿Qué preguntas podrías hacer mientras esperas que cargue el sistema?"
+      ],
+      way: [
+        "¿Cómo vas a manejar el próximo silencio?",
+        "¿Cómo vamos a saber que está funcionando?"
+      ]
+    },
+    medible: "Silencios explicados o aprovechados en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "customer-friendly-terms",
+    nombre: "Customer Friendly Terms",
+    subBehaviors: [
+      "Use customer friendly terms and avoid jargon / technical terms to avoid confusion"
+    ],
+    descripcion: "Usar un lenguaje sencillo y evitar términos técnicos o internos que confundan al cliente.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría que el cliente entendiera tus explicaciones?",
+        "¿Qué cambiaría si el cliente nunca tuviera que preguntarte qué significa algo?"
+      ],
+      reality: [
+        "¿Qué términos técnicos o internos usas sin darte cuenta?",
+        "En esta llamada, ¿hubo un momento en que el cliente se confundió? ¿Por qué?",
+        "¿Cómo te das cuenta de que el cliente no entendió?"
+      ],
+      options: [
+        "¿Cómo podrías explicar ese término con palabras del día a día?",
+        "¿Qué comparación o ejemplo podrías usar para que se entienda mejor?"
+      ],
+      way: [
+        "¿Qué término vas a dejar de usar y cómo lo vas a reemplazar?",
+        "¿Cómo te gustaría que te diera retroalimentación sobre esto?"
+      ]
+    },
+    medible: "Lenguaje sin jerga en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "customer-education",
+    nombre: "Customer Education",
+    subBehaviors: [
+      "Customer Education - Teaching processes, advisements, unlocking, claims"
+    ],
+    descripcion: "Enseñar al cliente procesos, avisos importantes, desbloqueos y reclamos para que sepa qué hacer.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría que el cliente aprendiera en tu llamada?",
+        "¿Cómo ayudaría al cliente saber hacer el proceso por su cuenta?"
+      ],
+      reality: [
+        "¿Qué procesos le explicas al cliente hoy (desbloqueos, reclamos, avisos)?",
+        "¿Cómo confirmas que el cliente entendió el proceso?",
+        "¿Qué procesos te cuesta más explicar?"
+      ],
+      options: [
+        "¿Cómo podrías explicar el proceso paso a paso de forma sencilla?",
+        "¿Qué información podrías enviarle por escrito para que la tenga a mano?"
+      ],
+      way: [
+        "¿Qué proceso vas a empezar a explicar mejor?",
+        "¿Cómo vamos a revisar tu avance?"
+      ]
+    },
+    medible: "Educación del cliente sobre el proceso aplicable en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "common-pleasantries",
+    nombre: "Common Pleasantries",
+    subBehaviors: [
+      "Use 'please', 'thank you', and the customer's name in an authentic, conversational manner, using voice inflection to demonstrate interest. Avoid interrupting, overtalking, or cutting customers off when they are speaking. Be nice, personalize the experience!"
+    ],
+    descripcion: "Usar cortesías (por favor, gracias, el nombre del cliente) de forma auténtica, con buena entonación y sin interrumpir.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría que el cliente describiera tu trato?",
+        "¿Qué quieres que el cliente sienta durante toda la llamada?"
+      ],
+      reality: [
+        "¿Cuántas veces usaste el nombre del cliente en esta llamada?",
+        "¿Cómo suena tu tono cuando estás cansado o la llamada es difícil?",
+        "¿Te ha pasado que interrumpes al cliente? ¿En qué momentos?"
+      ],
+      options: [
+        "¿Cómo podrías personalizar la llamada sin que suene a guion?",
+        "¿Qué podrías hacer para no interrumpir cuando ya sabes la respuesta?"
+      ],
+      way: [
+        "¿Qué vas a cuidar en tu próxima llamada?",
+        "¿Cómo te vas a dar cuenta de que lo lograste?"
+      ]
+    },
+    medible: "Cortesías auténticas y sin interrupciones en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "collect",
+    nombre: "Collect",
+    subBehaviors: [
+      "Request balance payment even when it is not the reason for the customer call/chat"
+    ],
+    descripcion: "Pedir el pago del saldo pendiente aunque no sea el motivo de la llamada o chat.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría lograr con los clientes que tienen saldo pendiente?",
+        "¿Cómo te gustaría sentirte al pedir un pago?"
+      ],
+      reality: [
+        "¿Revisas el saldo aunque el cliente llame por otro motivo?",
+        "¿Qué te detiene a veces para pedir el pago?",
+        "¿Cómo reacciona el cliente cuando lo pides?"
+      ],
+      options: [
+        "¿En qué momento de la llamada sería más natural pedir el pago?",
+        "¿Cómo podrías conectar el pago con el motivo de la llamada?"
+      ],
+      way: [
+        "¿Qué frase vas a usar para pedir el pago?",
+        "¿En cuántas llamadas te comprometes a pedirlo esta semana?"
+      ]
+    },
+    medible: "Solicitud de pago en el 100% de interacciones con saldo pendiente.",
+    ejemplo: false
+  },
+  {
+    // PENDIENTE: el segundo sub-behavior viene cortado en la herramienta original ("...to ensure YOUR understanding of the"). Confirmar el texto completo con Manuel.
+    id: "check-for-understanding",
+    nombre: "Check for Understanding",
+    subBehaviors: [
+      "Ask closed ended questions (yes/no answers) to ensure the customer understands your explanation, and verbally confirm customer's understanding of resolution",
+      "Ask closed ended questions (yes/no answers) to ensure YOUR understanding of the"
+    ],
+    descripcion: "Usar preguntas cerradas para confirmar que el cliente entendió y que tú entendiste bien al cliente.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría asegurarte de que tú y el cliente están en la misma página?",
+        "¿Qué cambiaría si confirmaras el entendimiento en cada llamada?"
+      ],
+      reality: [
+        "¿Cómo confirmas hoy que el cliente entendió tu explicación?",
+        "¿Cómo confirmas que tú entendiste bien lo que el cliente necesita?",
+        "¿Te ha pasado que el cliente vuelve a llamar porque no entendió algo?"
+      ],
+      options: [
+        "¿Qué preguntas de sí o no podrías hacer para confirmar?",
+        "¿En qué momentos de la llamada conviene confirmar?"
+      ],
+      way: [
+        "¿Qué pregunta de confirmación vas a usar desde hoy?",
+        "¿Cómo vamos a revisar que la estés usando?"
+      ]
+    },
+    medible: "Confirmación de entendimiento en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
   }
 ];
 
