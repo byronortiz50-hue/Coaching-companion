@@ -5,7 +5,11 @@
   CC.registrarPaso({
     id: "behavior",
     titulo: "Behavior",
-    listo: function () { return !!CC.estado.behaviorId; },
+    listo: function () {
+      var b = CC.behaviorActual();
+      if (!b) return false;
+      return !(b.subBehaviors && b.subBehaviors.length) || !!CC.subBehaviorActual();
+    },
     dibujar: function (cont) {
       var s = CC.estado.sesion;
 
@@ -17,43 +21,24 @@
         el("div", { className: "fila-campos" }, [
           campo("Representante", "text", s.representante, function (v) { s.representante = v; }, "Nombre (opcional)"),
           campo("Supervisor", "text", s.supervisor, function (v) { s.supervisor = v; }, "Nombre (opcional)"),
-          campo("Fecha", "date", s.fecha, function (v) { s.fecha = v; })
+          campo("Fecha", "date", s.fecha, function (v) { s.fecha = v; }),
+          selectorMetrica(s)
         ])
       ]));
 
-      /* Filtro por métrica */
-      var metricas = [];
-      CC.behaviors.forEach(function (b) {
-        b.metricas.forEach(function (m) { if (metricas.indexOf(m) === -1) metricas.push(m); });
-      });
-      var filtro = { valor: "" };
       var lista = el("div", { className: "lista-behaviors", role: "radiogroup", "aria-label": "Behaviors" });
-
-      var filtros = el("div", { className: "filtros" }, [el("span", { className: "etq" }, ["Filtrar por métrica:"])]);
-      ["Todas"].concat(metricas).forEach(function (m) {
-        filtros.appendChild(el("button", {
-          type: "button",
-          className: "chip chip-filtro" + (m === "Todas" ? " activo" : ""),
-          onclick: function (e) {
-            filtro.valor = m === "Todas" ? "" : m;
-            Array.prototype.forEach.call(filtros.querySelectorAll(".chip-filtro"), function (c) { c.classList.remove("activo"); });
-            e.currentTarget.classList.add("activo");
-            pintarLista();
-          }
-        }, [m]));
-      });
 
       function pintarLista() {
         lista.innerHTML = "";
-        CC.behaviors.filter(function (b) {
-          return !filtro.valor || b.metricas.indexOf(filtro.valor) !== -1;
-        }).forEach(function (b) {
+        CC.behaviors.slice().sort(function (x, y) { return x.nombre.localeCompare(y.nombre); }).forEach(function (b) {
           var elegido = b.id === CC.estado.behaviorId;
-          lista.appendChild(el("label", { className: "behavior" + (elegido ? " elegido" : "") }, [
+          lista.appendChild(el("div", { className: "behavior" + (elegido ? " elegido" : "") }, [
+           el("label", { className: "behavior-cabecera" }, [
             el("input", {
               type: "radio", name: "behavior", value: b.id, checked: elegido,
               onchange: function () {
                 CC.estado.behaviorId = b.id;
+                CC.estado.subBehavior = b.subBehaviors && b.subBehaviors.length === 1 ? 0 : -1;
                 CC.guardar();
                 pintarLista();
                 CC.refrescarPasos();
@@ -64,27 +49,66 @@
                 el("strong", {}, [b.nombre]), " ",
                 b.ejemplo ? CC.etiquetaEjemplo() : null
               ]),
-              CC.chipsMetricas(b.metricas),
-              el("p", {}, [b.descripcion]),
-              elegido ? el("div", { className: "se-ve-bien" }, [
-                el("span", { className: "etq" }, ["Cómo se ve cuando se hace bien:"]),
-                el("ul", {}, b.seVeBien.map(function (t) { return el("li", {}, [t]); }))
-              ]) : null
+              el("p", {}, [b.descripcion])
             ])
+           ]),
+           elegido ? detalleElegido(b) : null
           ]));
         });
       }
       pintarLista();
 
       cont.appendChild(el("section", { className: "tarjeta" }, [
-        filtros,
         lista,
         el("p", { className: "nota" }, [
-          "Los behaviors marcados como EJEMPLO son de muestra. Para usar los oficiales, edita el archivo datos/behaviors.js."
+          "Para agregar o cambiar behaviors y sub-behaviors, edita el archivo datos/behaviors.js."
         ])
       ]));
     }
   });
+
+  /* Sub-behaviors (o, si no tiene, la lista "seVeBien") del behavior elegido. */
+  function detalleElegido(b) {
+    if (b.subBehaviors && b.subBehaviors.length) {
+      var lista = el("div", { className: "sub-behaviors", role: "radiogroup", "aria-label": "Sub-behavior" });
+      b.subBehaviors.forEach(function (texto, i) {
+        lista.appendChild(el("label", { className: "sub-behavior" + (CC.estado.subBehavior === i ? " elegido" : "") }, [
+          el("input", {
+            type: "radio", name: "sub-behavior", checked: CC.estado.subBehavior === i,
+            onchange: function () {
+              CC.estado.subBehavior = i;
+              CC.guardar();
+              Array.prototype.forEach.call(lista.children, function (c, j) { c.classList.toggle("elegido", j === i); });
+              CC.refrescarPasos();
+            }
+          }),
+          el("span", {}, [texto])
+        ]));
+      });
+      return el("div", { className: "se-ve-bien" }, [
+        el("span", { className: "etq" }, ["Sub-Behavior: elige el que vas a trabajar"]),
+        lista
+      ]);
+    }
+    if (b.seVeBien && b.seVeBien.length) {
+      return el("div", { className: "se-ve-bien" }, [
+        el("span", { className: "etq" }, ["Cómo se ve cuando se hace bien:"]),
+        el("ul", {}, b.seVeBien.map(function (t) { return el("li", {}, [t]); }))
+      ]);
+    }
+    return null;
+  }
+
+  function selectorMetrica(s) {
+    return el("label", { className: "campo" }, [
+      el("span", {}, ["Métrica a mejorar"]),
+      el("select", {
+        onchange: function (e) { s.metrica = e.target.value; CC.guardar(); }
+      }, [el("option", { value: "" }, ["(opcional)"])].concat(CC.metricas.map(function (m) {
+        return el("option", { value: m.id, selected: s.metrica === m.id }, [m.id]);
+      })))
+    ]);
+  }
 
   function campo(etiqueta, tipo, valor, alCambiar, placeholder) {
     return el("label", { className: "campo" }, [

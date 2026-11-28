@@ -77,10 +77,12 @@
         if (!s.fechaLimite) s.fechaLimite = CC.sumarDias(CC.estado.sesion.fecha || CC.hoyISO(), 30);
         if (!s.fechaSeguimiento) s.fechaSeguimiento = CC.sumarDias(CC.estado.sesion.fecha || CC.hoyISO(), 7);
         var borrador = {
-          s: b ? "Aplicar \"" + b.nombre + "\" en todas las llamadas: " + b.seVeBien.map(minuscula).join("; ") : "",
-          m: b ? b.medible : "",
+          s: b ? "Aplicar \"" + b.nombre + "\" en todas las llamadas: " +
+            (CC.subBehaviorActual() || (b.seVeBien || []).map(minuscula).join("; ")) : "",
+          m: b ? b.medible + (CC.estado.sesion.metrica ? " Llevar " + CC.estado.sesion.metrica + " del valor actual a la meta." : "") : "",
           a: ayudas.length ? "Con apoyo de: " + ayudas.join("; ") + (est ? " (adaptado a estilo " + est.nombre.toLowerCase() + ")" : "") : "",
-          r: b ? "Impacta " + b.metricas.join(", ") + (causas.length ? " y atiende la causa raíz identificada (" + causas.join(", ") + ")." : ".") : "",
+          r: b ? (CC.estado.sesion.metrica ? "Mejora " + CC.estado.sesion.metrica : "Mejora la experiencia del cliente") +
+            (causas.length ? " y atiende la causa raíz identificada (" + causas.join(", ") + ")." : ".") : "",
           t: "Aplicar desde la próxima llamada; seguimiento el " + CC.formatearFecha(s.fechaSeguimiento) + " y cierre del plan el " + CC.formatearFecha(s.fechaLimite) + "."
         };
         CRITERIOS.forEach(function (c) { if (!s[c.id].trim() && borrador[c.id]) s[c.id] = borrador[c.id]; });
@@ -136,7 +138,9 @@
     r.push("Fecha: " + CC.formatearFecha(e.sesion.fecha) +
       (e.sesion.representante ? " | Representante: " + e.sesion.representante : "") +
       (e.sesion.supervisor ? " | Supervisor: " + e.sesion.supervisor : ""));
-    r.push("Behavior: " + (b ? b.nombre + " [" + b.metricas.join(", ") + "]" : "(sin elegir)"));
+    if (e.sesion.metrica) r.push("Métrica: " + e.sesion.metrica);
+    r.push("Behavior: " + (b ? b.nombre : "(sin elegir)"));
+    if (CC.subBehaviorActual()) r.push("Sub-Behavior: " + CC.subBehaviorActual());
     r.push("");
     CC.etapasGrow.forEach(function (et) {
       var notas = e.grow[et.id].notas.trim();
