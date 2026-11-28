@@ -30,7 +30,7 @@
 
       function pintarLista() {
         lista.innerHTML = "";
-        CC.behaviors.forEach(function (b) {
+        CC.behaviors.slice().sort(function (x, y) { return x.nombre.localeCompare(y.nombre); }).forEach(function (b) {
           var elegido = b.id === CC.estado.behaviorId;
           lista.appendChild(el("div", { className: "behavior" + (elegido ? " elegido" : "") }, [
            el("label", { className: "behavior-cabecera" }, [

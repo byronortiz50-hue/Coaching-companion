@@ -54,4 +54,4 @@ Todo el contenido está en `datos/`. Se puede abrir con el Bloc de notas: cada a
 
 ## Estado
 
-Alpha. Incluye 11 behaviors oficiales con sus sub-behaviors; se pueden agregar más en `datos/behaviors.js`. Cualquier behavior se puede usar con cualquier métrica: la métrica se elige en cada sesión.
+Alpha. Incluye 17 behaviors oficiales con sus sub-behaviors; se pueden agregar más en `datos/behaviors.js`. Cualquier behavior se puede usar con cualquier métrica: la métrica se elige en cada sesión.

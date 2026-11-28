@@ -384,5 +384,189 @@ CC.behaviors = [
     },
     medible: "Pasos requeridos, seguridad y documentación completos en 10 de 10 interacciones revisadas.",
     ejemplo: false
+  },
+  {
+    id: "probing-questions",
+    nombre: "Probing Questions",
+    subBehaviors: [
+      "Ask 'who' and 'how' questions about current lines to uncover AAL opportunities",
+      "Ask if there are specific charges the customer is asking about to better understand their concern",
+      "Ask open ended questions about how the customer uses their device/service in order to determine needs and sales offers",
+      "Ask questions to determine situation - duration - location to start the troubleshooting process",
+      "Ask targeted questions (\"who\", \"how\", \"what\", \"when\", etc.) about specific line charges to understand the cause of billing concern and move the conversation forward",
+      "Ask the customer why they are considering discontinuing service with T-Mobile",
+      "Move to a direct question to close the sale and confirm/gain agreement on the outcome with the customer"
+    ],
+    descripcion: "Hacer preguntas abiertas y específicas para entender la situación, la necesidad o la preocupación del cliente y llevar la conversación a un acuerdo.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría entender del cliente antes de proponer una solución?",
+        "¿Cómo cambiarían tus llamadas si llegaras más rápido a la causa del problema?"
+      ],
+      reality: [
+        "¿Qué preguntas haces normalmente al inicio de la llamada?",
+        "¿Cuándo usas preguntas abiertas y cuándo cerradas?",
+        "En esta llamada, ¿qué información te faltó y qué pregunta te la habría dado?",
+        "¿Cómo cierras la conversación para confirmar el acuerdo con el cliente?"
+      ],
+      options: [
+        "¿Qué preguntas de situación, duración y ubicación podrías hacer siempre antes del troubleshooting?",
+        "¿Qué preguntas 'quién' y 'cómo' te ayudarían a descubrir necesidades u oportunidades?",
+        "¿Qué pregunta directa podrías usar para cerrar y confirmar el acuerdo?"
+      ],
+      way: [
+        "¿Qué pregunta nueva vas a incorporar en tus llamadas?",
+        "¿Cómo vamos a revisar si te está ayudando?"
+      ]
+    },
+    medible: "Preguntas de sondeo adecuadas al tipo de llamada en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "power-words",
+    nombre: "Power Words",
+    subBehaviors: [
+      "Use power words to demonstrate eagerness to resolve"
+    ],
+    descripcion: "Usar palabras que transmitan seguridad y ganas de resolver el problema del cliente.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría que el cliente percibiera tu disposición para ayudarlo?",
+        "¿Qué quieres que el cliente sienta cuando escucha tus primeras palabras?"
+      ],
+      reality: [
+        "¿Qué frases usas hoy para mostrarle al cliente que lo vas a ayudar?",
+        "Escuchando esta llamada, ¿qué palabras transmitieron seguridad? ¿Cuáles transmitieron duda?",
+        "¿Usas palabras como 'intentar' o 'creo que'? ¿Cómo crees que las recibe el cliente?"
+      ],
+      options: [
+        "¿Qué palabras o frases podrías usar para mostrar ganas de resolver?",
+        "¿Qué frase te sale natural y no suena a guion?"
+      ],
+      way: [
+        "¿Qué tres frases vas a empezar a usar desde hoy?",
+        "¿Cómo te vas a acordar de usarlas?"
+      ]
+    },
+    medible: "Power words presentes en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "plan-product-knowledge",
+    nombre: "Plan & Product Knowledge",
+    subBehaviors: [
+      "Plan & Product Knowledge - Plans upgrades, trade-ins, device options"
+    ],
+    descripcion: "Conocer planes, upgrades, trade-ins y opciones de equipos para dar información correcta y recomendar lo adecuado.",
+    preguntas: {
+      goal: [
+        "¿Qué tan seguro te gustaría sentirte al explicar planes y equipos?",
+        "¿Qué te gustaría poder recomendar al cliente sin dudar?"
+      ],
+      reality: [
+        "¿Qué planes, upgrades o trade-ins se te hacen más difíciles de explicar?",
+        "¿Dónde buscas la información cuando tienes una duda?",
+        "En esta llamada, ¿la información que diste fue completa y correcta?"
+      ],
+      options: [
+        "¿Qué recurso podrías revisar para reforzar lo que menos dominas?",
+        "¿Cómo podrías comparar opciones para el cliente de forma sencilla?"
+      ],
+      way: [
+        "¿Qué plan u opción vas a estudiar primero esta semana?",
+        "¿Cómo vamos a confirmar que ya lo dominas?"
+      ]
+    },
+    medible: "Información correcta de planes, upgrades y equipos en 10 de 10 interacciones revisadas.",
+    ejemplo: false
+  },
+  {
+    id: "payment-handling",
+    nombre: "Payment Handling",
+    subBehaviors: [
+      "Payment Handling - Payments, Payment Arrangements, collections"
+    ],
+    descripcion: "Manejar pagos, arreglos de pago y cobranza de forma correcta y concretando un compromiso con el cliente.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría lograr cuando un cliente tiene saldo pendiente?",
+        "¿Cómo te gustaría sentirte al hablar de pagos con el cliente?"
+      ],
+      reality: [
+        "¿En qué momento de la llamada hablas del saldo pendiente?",
+        "¿Qué opciones de pago o arreglos ofreces hoy?",
+        "¿Qué pasa por tu mente cuando tienes que pedir un pago?"
+      ],
+      options: [
+        "¿Cómo podrías conectar el pago con el beneficio de mantener el servicio activo?",
+        "¿Qué opciones podrías ofrecer antes de que el cliente diga que no?"
+      ],
+      way: [
+        "¿Qué frase vas a usar para iniciar la conversación de pago?",
+        "¿Cuántos pagos o arreglos te propones concretar en tu próximo turno?"
+      ]
+    },
+    medible: "Pago o arreglo de pago ofrecido en el 100% de llamadas con saldo pendiente.",
+    ejemplo: false
+  },
+  {
+    id: "ownership",
+    nombre: "Ownership",
+    subBehaviors: [
+      "Avoid placing blame (take ownership of previous experiences) and if external assistance is needed to resolve, did you partner with the right people?",
+      "Send your personal guarantee via Atlas, especially after complex situations have been addressed",
+      "Tell your customer you know how important it is to resolve their issue(s)"
+    ],
+    descripcion: "Hacerse responsable de la experiencia del cliente sin culpar a otros, buscar el apoyo correcto y comprometerse personalmente con la resolución.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría que el cliente sintiera sobre tu compromiso con su problema?",
+        "¿Cómo te gustaría manejar las experiencias anteriores negativas del cliente?"
+      ],
+      reality: [
+        "¿Qué dices cuando el cliente se queja de una llamada anterior?",
+        "Cuando necesitas ayuda de otra área, ¿cómo eliges con quién trabajar?",
+        "¿Cuándo envías tu garantía personal por Atlas?"
+      ],
+      options: [
+        "¿Cómo podrías asumir la experiencia anterior sin culpar a nadie?",
+        "¿Qué frase podrías usar para decirle al cliente que su problema es importante para ti?"
+      ],
+      way: [
+        "¿Qué vas a hacer distinto la próxima vez que un cliente llegue molesto por otra llamada?",
+        "¿Cómo vamos a revisar que envíes tu garantía personal?"
+      ]
+    },
+    medible: "Ownership sin culpar a otros y garantía personal enviada en 9 de 10 interacciones aplicables.",
+    ejemplo: false
+  },
+  {
+    id: "onboarding",
+    nombre: "Onboarding",
+    subBehaviors: [
+      "Onboard the customer (new/existing) to any sales offers, TEX Experience Branding, or Un-carrier moves accepted by giving them a specific task to complete related to the updates to the account. Utilize NBA if flagged"
+    ],
+    descripcion: "Guiar al cliente con una tarea concreta para completar los cambios aceptados en su cuenta (ofertas, TEX Experience Branding, Un-carrier moves), usando NBA si está marcado.",
+    preguntas: {
+      goal: [
+        "¿Qué quieres que el cliente sepa hacer después de aceptar un cambio en su cuenta?",
+        "¿Cómo te darías cuenta de que el cliente quedó listo para usar lo que aceptó?"
+      ],
+      reality: [
+        "Cuando el cliente acepta una oferta, ¿qué le explicas después?",
+        "¿Le das una tarea específica para completar? ¿Cuál?",
+        "¿Revisas en NBA si hay algo marcado para onboarding?"
+      ],
+      options: [
+        "¿Qué tarea concreta podrías darle al cliente según lo que aceptó?",
+        "¿Cómo podrías confirmar que entendió lo que tiene que hacer?"
+      ],
+      way: [
+        "¿Qué vas a decirle al cliente después de cada oferta aceptada?",
+        "¿Cómo vamos a saber que lo estás haciendo?"
+      ]
+    },
+    medible: "Onboarding con tarea específica en 9 de 10 ofertas o cambios aceptados monitoreados.",
+    ejemplo: false
   }
 ];
