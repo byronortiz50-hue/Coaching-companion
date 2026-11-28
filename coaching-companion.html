@@ -134,6 +134,13 @@ p { margin: 0 0 .75em; }
 .chip-filtro.activo { background: var(--primario); color: var(--sobre-primario); border-color: var(--primario); }
 
 /* Behaviors */
+.selectores-behavior { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.selectores-behavior select { width: 100%; max-width: 100%; text-overflow: ellipsis; }
+.selectores-behavior select:disabled { opacity: .6; }
+@media (max-width: 640px) { .selectores-behavior { grid-template-columns: minmax(0, 1fr); } }
+.behavior-detalle > p { margin: 12px 0 0; color: var(--tenue); }
+.behavior-detalle .se-ve-bien { padding-left: 0; }
+.behavior-detalle .se-ve-bien p { margin: 4px 0 0; }
 .lista-behaviors { display: grid; gap: 10px; }
 .behavior { padding: 14px; border: 1px solid var(--borde); border-radius: var(--radio); }
 .behavior-cabecera { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
@@ -1918,40 +1925,59 @@ window.CC = window.CC || {};
         ])
       ]));
 
-      var lista = el("div", { className: "lista-behaviors", role: "radiogroup", "aria-label": "Behaviors" });
+      var detalle = el("div", { className: "behavior-detalle" });
+      var selSub = el("select", { id: "sel-sub", onchange: function (e) {
+        CC.estado.subBehavior = e.target.value === "" ? -1 : Number(e.target.value);
+        CC.guardar(); pintarDetalle(); CC.refrescarPasos();
+      } });
+      var ordenados = CC.behaviors.slice().sort(function (x, y) { return x.nombre.localeCompare(y.nombre); });
+      var selBehavior = el("select", { id: "sel-behavior", onchange: function (e) {
+        var b = CC.behaviors.filter(function (x) { return x.id === e.target.value; })[0] || null;
+        CC.estado.behaviorId = b ? b.id : null;
+        CC.estado.subBehavior = b && b.subBehaviors && b.subBehaviors.length === 1 ? 0 : -1;
+        CC.guardar(); pintarSub(); pintarDetalle(); CC.refrescarPasos();
+      } }, [el("option", { value: "" }, ["Elige un behavior"])].concat(ordenados.map(function (b) {
+        return el("option", { value: b.id, selected: b.id === CC.estado.behaviorId }, [b.nombre]);
+      })));
 
-      function pintarLista() {
-        lista.innerHTML = "";
-        CC.behaviors.slice().sort(function (x, y) { return x.nombre.localeCompare(y.nombre); }).forEach(function (b) {
-          var elegido = b.id === CC.estado.behaviorId;
-          lista.appendChild(el("div", { className: "behavior" + (elegido ? " elegido" : "") }, [
-           el("label", { className: "behavior-cabecera" }, [
-            el("input", {
-              type: "radio", name: "behavior", value: b.id, checked: elegido,
-              onchange: function () {
-                CC.estado.behaviorId = b.id;
-                CC.estado.subBehavior = b.subBehaviors && b.subBehaviors.length === 1 ? 0 : -1;
-                CC.guardar();
-                pintarLista();
-                CC.refrescarPasos();
-              }
-            }),
-            el("div", { className: "behavior-cuerpo" }, [
-              el("div", { className: "behavior-titulo" }, [
-                el("strong", {}, [b.nombre]), " ",
-                b.ejemplo ? CC.etiquetaEjemplo() : null
-              ]),
-              el("p", {}, [b.descripcion])
-            ])
-           ]),
-           elegido ? detalleElegido(b) : null
-          ]));
+      function pintarSub() {
+        var b = CC.behaviorActual();
+        var subs = b && b.subBehaviors ? b.subBehaviors : [];
+        selSub.innerHTML = "";
+        selSub.appendChild(el("option", { value: "" }, [!b ? "Primero elige un behavior" : subs.length ? "Elige un sub-behavior" : "Este behavior no tiene sub-behaviors"]));
+        subs.forEach(function (t, i) {
+          selSub.appendChild(el("option", { value: String(i), selected: CC.estado.subBehavior === i }, [t]));
         });
+        selSub.disabled = !subs.length;
       }
-      pintarLista();
+
+      function pintarDetalle() {
+        var b = CC.behaviorActual();
+        detalle.innerHTML = "";
+        if (!b) return;
+        detalle.appendChild(el("p", {}, [b.descripcion]));
+        var sub = CC.subBehaviorActual();
+        if (sub) {
+          detalle.appendChild(el("div", { className: "se-ve-bien" }, [
+            el("span", { className: "etq" }, ["Sub-Behavior elegido:"]),
+            el("p", {}, [sub])
+          ]));
+        } else if (!(b.subBehaviors && b.subBehaviors.length) && b.seVeBien && b.seVeBien.length) {
+          detalle.appendChild(el("div", { className: "se-ve-bien" }, [
+            el("span", { className: "etq" }, ["Cómo se ve cuando se hace bien:"]),
+            el("ul", {}, b.seVeBien.map(function (t) { return el("li", {}, [t]); }))
+          ]));
+        }
+      }
+      pintarSub();
+      pintarDetalle();
 
       cont.appendChild(el("section", { className: "tarjeta" }, [
-        lista,
+        el("div", { className: "selectores-behavior" }, [
+          el("label", { className: "campo" }, [el("span", {}, ["Behavior"]), selBehavior]),
+          el("label", { className: "campo" }, [el("span", {}, ["Sub-Behavior"]), selSub])
+        ]),
+        detalle,
         el("p", { className: "nota" }, [
           "Para agregar o cambiar behaviors y sub-behaviors, edita el archivo datos/behaviors.js."
         ])
@@ -1959,43 +1985,11 @@ window.CC = window.CC || {};
     }
   });
 
-  /* Sub-behaviors (o, si no tiene, la lista "seVeBien") del behavior elegido. */
-  function detalleElegido(b) {
-    if (b.subBehaviors && b.subBehaviors.length) {
-      var lista = el("div", { className: "sub-behaviors", role: "radiogroup", "aria-label": "Sub-behavior" });
-      b.subBehaviors.forEach(function (texto, i) {
-        lista.appendChild(el("label", { className: "sub-behavior" + (CC.estado.subBehavior === i ? " elegido" : "") }, [
-          el("input", {
-            type: "radio", name: "sub-behavior", checked: CC.estado.subBehavior === i,
-            onchange: function () {
-              CC.estado.subBehavior = i;
-              CC.guardar();
-              Array.prototype.forEach.call(lista.children, function (c, j) { c.classList.toggle("elegido", j === i); });
-              CC.refrescarPasos();
-            }
-          }),
-          el("span", {}, [texto])
-        ]));
-      });
-      return el("div", { className: "se-ve-bien" }, [
-        el("span", { className: "etq" }, ["Sub-Behavior: elige el que vas a trabajar"]),
-        lista
-      ]);
-    }
-    if (b.seVeBien && b.seVeBien.length) {
-      return el("div", { className: "se-ve-bien" }, [
-        el("span", { className: "etq" }, ["Cómo se ve cuando se hace bien:"]),
-        el("ul", {}, b.seVeBien.map(function (t) { return el("li", {}, [t]); }))
-      ]);
-    }
-    return null;
-  }
-
   function selectorMetrica(s) {
     return el("label", { className: "campo" }, [
       el("span", {}, ["Métrica a mejorar"]),
       el("select", {
-        onchange: function (e) { s.metrica = e.target.value; CC.guardar(); }
+        id: "sel-metrica", onchange: function (e) { s.metrica = e.target.value; CC.guardar(); }
       }, [el("option", { value: "" }, ["(opcional)"])].concat(CC.metricas.map(function (m) {
         return el("option", { value: m.id, selected: s.metrica === m.id }, [m.id]);
       })))
