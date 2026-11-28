@@ -804,5 +804,218 @@ CC.behaviors = [
     },
     medible: "Confirmación de entendimiento en 9 de 10 interacciones monitoreadas.",
     ejemplo: false
+  },
+  {
+    id: "account-management",
+    nombre: "Account Management",
+    subBehaviors: [
+      "Account Management - updating customer information, user management"
+    ],
+    descripcion: "Mantener la cuenta al día: actualizar la información del cliente y administrar usuarios correctamente.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría asegurar cada vez que haces un cambio en la cuenta?",
+        "¿Cómo ayuda al cliente que su información esté siempre correcta?"
+      ],
+      reality: [
+        "¿Cómo verificas hoy los datos del cliente antes de actualizarlos?",
+        "¿Qué cambios de usuarios o información te generan más dudas?",
+        "¿Te ha pasado que un cambio quedó incompleto o incorrecto? ¿Qué pasó?"
+      ],
+      options: [
+        "¿Qué pasos podrías confirmar siempre antes de guardar un cambio?",
+        "¿Dónde podrías consultar el proceso cuando tengas dudas?"
+      ],
+      way: [
+        "¿Qué vas a revisar siempre al actualizar una cuenta?",
+        "¿Cómo vamos a revisar tus cambios esta semana?"
+      ]
+    },
+    medible: "Actualizaciones de cuenta completas y correctas en 10 de 10 casos revisados.",
+    ejemplo: false
+  },
+  {
+    // PENDIENTE: el sub-behavior "Present the most powerful benefits for the individual first when making a Sales" parece cortado en la herramienta original. Confirmar con Manuel.
+    id: "act-as-a-consultant",
+    nombre: "Act as a Consultant",
+    subBehaviors: [
+      "Build relationship around T-Mobile products and services",
+      "Compliment customers' decision to purchase products/services and provide benefits of account changes and continue to build value based on their choice",
+      "Give specific benefits of plan / feature changes / AAL",
+      "Position policies in a way that shows benefit to the customers (What we CAN do vs what we CAN'T do)",
+      "Present the most powerful benefits for the individual first when making a Sales",
+      "Reinforce recommendation by sharing a relevant example of how products - services - and self help benefited you or can benefit the customer"
+    ],
+    descripcion: "Actuar como asesor: recomendar según las necesidades del cliente, presentar beneficios concretos y reforzar el valor de sus decisiones.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría que el cliente te viera: como alguien que vende o como alguien que asesora?",
+        "¿Qué te gustaría lograr al recomendar un producto o cambio?"
+      ],
+      reality: [
+        "¿Cómo eliges qué beneficios mencionar al cliente?",
+        "Cuando una política no permite algo, ¿cómo se lo explicas?",
+        "¿Qué haces después de que el cliente acepta un cambio o una compra?"
+      ],
+      options: [
+        "¿Cómo podrías enfocarte en lo que SÍ podemos hacer?",
+        "¿Qué ejemplo personal o de otro cliente podrías usar para reforzar una recomendación?",
+        "¿Cuál sería el beneficio más poderoso para este tipo de cliente?"
+      ],
+      way: [
+        "¿Qué vas a hacer distinto en tu próxima recomendación?",
+        "¿Cómo vamos a revisar tu avance?"
+      ]
+    },
+    medible: "Recomendaciones con beneficios personalizados en 9 de 10 interacciones aplicables monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "active-listening",
+    nombre: "Active Listening",
+    subBehaviors: [
+      "Listen or read intently, while using verbal/written head nods, to avoid asking the customer to repeat themselves - be engaged"
+    ],
+    descripcion: "Escuchar o leer con atención, mostrando que sigues al cliente, para no pedirle que repita.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría que el cliente se sintiera mientras te explica su problema?",
+        "¿Qué cambiaría si nunca tuvieras que pedirle al cliente que repita algo?"
+      ],
+      reality: [
+        "¿Qué haces mientras el cliente habla o escribe?",
+        "En esta llamada, ¿le pediste al cliente que repitiera algo? ¿Por qué pasó?",
+        "¿Qué te distrae más durante la interacción?"
+      ],
+      options: [
+        "¿Qué señales verbales o escritas podrías usar para mostrar que estás escuchando?",
+        "¿Cómo podrías tomar notas rápidas para no perder detalles?"
+      ],
+      way: [
+        "¿Qué vas a hacer para estar más presente en tus llamadas?",
+        "¿Cómo te vas a dar cuenta de que lo lograste?"
+      ]
+    },
+    medible: "Sin pedir al cliente que repita información en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "ai-tool-utilization",
+    nombre: "AI Tool Utilization",
+    subBehaviors: [
+      "AI Tool Utilization"
+    ],
+    descripcion: "Usar las herramientas de inteligencia artificial disponibles para resolver de forma más rápida y precisa.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría lograr usando las herramientas de IA?",
+        "¿En qué parte de la llamada te ayudarían más?"
+      ],
+      reality: [
+        "¿Qué herramientas de IA usas hoy y en qué momentos?",
+        "¿Qué te hace dudar de usarlas?",
+        "¿Cuándo te han ayudado y cuándo no?"
+      ],
+      options: [
+        "¿En qué tipo de llamada podrías empezar a usarlas?",
+        "¿Cómo podrías verificar la información que te da la herramienta?"
+      ],
+      way: [
+        "¿Cómo vas a incorporar la herramienta esta semana?",
+        "¿Cómo vamos a saber que te está ayudando?"
+      ]
+    },
+    medible: "Uso de la herramienta de IA en 9 de 10 interacciones aplicables monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "apology-empathy",
+    nombre: "Apology / Empathy",
+    subBehaviors: [
+      "Verbalize personalized empathy statements in response to each customer trigger and acknowledging customer effort - even if the issue is in the past and has been resolved"
+    ],
+    descripcion: "Expresar empatía personalizada ante cada momento de molestia del cliente y reconocer su esfuerzo, aunque el problema ya esté resuelto.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría que el cliente se sintiera cuando te cuenta lo que le pasó?",
+        "¿Qué cambiaría en tus resultados si cada cliente se sintiera comprendido?"
+      ],
+      reality: [
+        "¿Cómo identificas los momentos en que el cliente está molesto?",
+        "¿Qué frases de empatía usas hoy? ¿Suenan personalizadas?",
+        "¿Reconoces el esfuerzo del cliente cuando el problema ya pasó?"
+      ],
+      options: [
+        "¿Cómo podrías personalizar la empatía según lo que el cliente te contó?",
+        "¿Qué podrías decir para reconocer el esfuerzo del cliente?"
+      ],
+      way: [
+        "¿Qué vas a hacer distinto la próxima vez que un cliente exprese molestia?",
+        "¿Cómo te gustaría que te diera retroalimentación sobre esto?"
+      ]
+    },
+    medible: "Empatía personalizada ante cada trigger en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "be-confident",
+    nombre: "Be Confident",
+    subBehaviors: [
+      "Demonstrate confidence with words: Use 'will' instead of 'should' - 'I know' instead of 'I think' - Avoid 'umms' and 'uhhhs' (some other examples are 'might', 'maybe', 'possibly', 'could', 'looks like', etc.)"
+    ],
+    descripcion: "Hablar con seguridad: usar palabras firmes y evitar muletillas o expresiones de duda.",
+    preguntas: {
+      goal: [
+        "¿Cómo te gustaría sonar ante el cliente?",
+        "¿Qué crees que siente el cliente cuando escucha seguridad en tu voz?"
+      ],
+      reality: [
+        "Escuchando esta llamada, ¿qué palabras de duda usaste ('creo', 'tal vez', 'podría')?",
+        "¿En qué momentos aparecen más las muletillas?",
+        "¿Qué te hace sentir inseguro en esos momentos?"
+      ],
+      options: [
+        "¿Qué palabras firmes podrías usar en lugar de las de duda?",
+        "¿Qué podrías preparar para sentirte más seguro en esos momentos?"
+      ],
+      way: [
+        "¿Qué palabra de duda vas a reemplazar primero?",
+        "¿Cómo vamos a revisar tu avance?"
+      ]
+    },
+    medible: "Lenguaje seguro y sin muletillas en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "be-efficient",
+    nombre: "Be Efficient",
+    subBehaviors: [
+      "Anticipate additional questions by giving the customer all pertinent information to their issue in a concise high-level overview to maintain efficiency. Ask pointed questions to determine if deeper information is required.",
+      "Multi-task while you are interacting with the customer",
+      "Use your tools to avoid asking unnecessary questions: C2, previous memos, phone type, features, etc"
+    ],
+    descripcion: "Ser eficiente: anticipar dudas, trabajar en paralelo mientras conversas y usar las herramientas para no hacer preguntas innecesarias.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría lograr con el tiempo de tus llamadas?",
+        "¿Cómo sería una llamada eficiente para ti y para el cliente?"
+      ],
+      reality: [
+        "¿En qué parte de la llamada sientes que se te va más el tiempo?",
+        "¿Qué preguntas haces que podrías responder revisando C2 o los memos?",
+        "¿Trabajas en las herramientas mientras hablas con el cliente?"
+      ],
+      options: [
+        "¿Qué información podrías dar de una vez para anticipar dudas?",
+        "¿Qué podrías revisar antes de preguntar?",
+        "¿Qué tareas podrías hacer en paralelo?"
+      ],
+      way: [
+        "¿Qué cambio vas a hacer primero para ser más eficiente?",
+        "¿Cómo vas a medir tu avance esta semana?"
+      ]
+    },
+    medible: "Sin preguntas innecesarias y con información anticipada en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
   }
 ];
