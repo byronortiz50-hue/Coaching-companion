@@ -53,4 +53,4 @@ Todo el contenido está en `datos/`. Se puede abrir con el Bloc de notas: cada a
 
 ## Estado
 
-Primera versión. Los behaviors son **de ejemplo** (marcados como EJEMPLO) hasta tener la lista oficial.
+Alpha. Incluye los primeros 5 behaviors oficiales (Visual Audit, Tools & Resources, Thank the Customer, Set Expectations, Self Help) con sus sub-behaviors; faltan más por agregar.

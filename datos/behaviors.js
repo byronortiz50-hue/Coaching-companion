@@ -2,282 +2,219 @@
  * ============================================================
  *  BEHAVIORS  (archivo para editar)
  * ============================================================
- *  ⚠ EJEMPLOS: estos behaviors son de muestra. Reemplázalos por
- *  la lista oficial de la operación.
+ *  Behaviors y sub-behaviors oficiales, con el mismo texto en
+ *  inglés que la herramienta de registro de coaching.
+ *  Faltan behaviors: agrégalos al final de la lista.
  *
  *  Cómo agregar uno nuevo: copia un bloque { ... }, pégalo al
  *  final de la lista (separado por coma) y cambia el texto.
  *
  *  Campos:
  *   id            Identificador corto, sin espacios ni acentos.
- *   nombre        Cómo lo verá el supervisor.
- *   metricas      Una o varias de: "NPS", "7D FCR", "Stay Connected",
- *                 "CRT", "HSE", "C&A/100".
- *   descripcion   Qué es el behavior, en una frase.
- *   seVeBien      Lista de conductas observables cuando se hace bien.
+ *   nombre        Nombre exacto del behavior (como en la herramienta).
+ *   subBehaviors  Lista de sub-behaviors, texto exacto.
+ *   metricas      Métricas en las que impacta. Una o varias de:
+ *                 "NPS", "7D FCR", "Stay Connected", "CRT", "HSE",
+ *                 "C&A/100".
+ *   descripcion   Qué es el behavior, en una frase (español).
  *   preguntas     Preguntas de autodescubrimiento propias de este
  *                 behavior para cada etapa GROW. Se muestran antes
  *                 que las preguntas generales (datos/preguntas-grow.js).
  *                 goal / reality / options / way (Way forward).
- *   medible       Sugerencia de cómo medir el avance (para el plan SMART).
- *   ejemplo       true = behavior de ejemplo (muestra la etiqueta EJEMPLO).
+ *   medible       Sugerencia de cómo medir el avance (plan SMART).
+ *   ejemplo       true = behavior de muestra (etiqueta EJEMPLO).
+ *
+ *  Plantilla vacía para copiar:
+ *
+ *  {
+ *    id: "",
+ *    nombre: "",
+ *    subBehaviors: [
+ *      ""
+ *    ],
+ *    metricas: [],
+ *    descripcion: "",
+ *    preguntas: { goal: [], reality: [], options: [], way: [] },
+ *    medible: ""
+ *  },
  * ============================================================
  */
 window.CC = window.CC || {};
 
 CC.behaviors = [
   {
-    id: "verificar-solucion",
-    nombre: "Verificar la solución antes de cerrar la llamada",
-    metricas: ["7D FCR", "NPS"],
-    descripcion: "Confirmar con el cliente, en la llamada, que el problema técnico quedó resuelto antes de despedirse.",
-    seVeBien: [
-      "Pide al cliente que pruebe el servicio o equipo mientras sigue en línea.",
-      "Pregunta si hay algún otro síntoma o problema relacionado.",
-      "Resume lo que se hizo y qué debe esperar el cliente después."
+    id: "visual-audit",
+    nombre: "Visual Audit",
+    subBehaviors: [
+      "Complete a visual audit (NBA - previous memos - tenure - usage - rate plan - balance - additional charges) to identify sales offers & adjacent issues, reduce customer effort, or (tenure - previous credits - balance - payment history) prior to negotiating a credit / payment, etc",
+      "Complete a visual audit early and access NBA - be prepared to transition to the treatment"
     ],
+    metricas: ["7D FCR", "CRT", "C&A/100", "Stay Connected"],
+    descripcion: "Revisar la cuenta al inicio de la interacción (NBA, memos, tenure, uso, plan, balance, cargos, créditos previos e historial de pagos) para anticipar problemas, ofertas y decisiones de crédito o pago.",
     preguntas: {
       goal: [
-        "¿Qué te gustaría que pasara con tus rellamadas a 7 días en el próximo mes?",
-        "¿Cómo te darías cuenta de que un cliente colgó con su problema realmente resuelto?"
+        "¿Qué te gustaría saber del cliente antes de que termine de explicar su problema?",
+        "Si hicieras la auditoría visual en todas tus llamadas, ¿qué cambiaría en tu tiempo de resolución y en tus rellamadas?"
       ],
       reality: [
-        "Cuando terminas el troubleshooting, ¿qué haces justo antes de despedirte?",
-        "En las últimas llamadas que volvieron en 7 días, ¿qué tenían en común?",
-        "¿En qué tipo de llamadas sientes que es difícil probar con el cliente en línea?"
+        "Cuéntame qué revisas en la cuenta en los primeros segundos de la llamada.",
+        "¿En qué momento abres NBA? ¿Qué pasa cuando lo abres tarde?",
+        "En esta llamada, ¿qué información de la cuenta (memos, balance, cargos) te habría ayudado a resolver antes?",
+        "Antes de negociar un crédito o un pago, ¿qué revisas de tenure, créditos previos e historial de pagos?"
       ],
       options: [
-        "¿Qué podrías decirle al cliente para que pruebe el servicio sin que se sienta una pérdida de tiempo?",
-        "¿Qué compañero tiene un FCR alto y qué crees que hace diferente al cerrar?"
+        "¿Qué orden de revisión podrías seguir siempre para no olvidar nada?",
+        "¿Cómo podrías hacer la auditoría mientras escuchas al cliente, sin dejar silencios largos?",
+        "¿Qué issues adyacentes u ofertas podrías detectar si revisas uso y plan desde el inicio?"
       ],
       way: [
-        "¿Qué frase de verificación vas a usar a partir de hoy?",
-        "¿Cómo vas a recordar hacerlo en cada llamada?"
+        "¿Qué vas a revisar primero en cada llamada a partir de hoy?",
+        "¿Cómo vas a recordar abrir NBA al inicio?"
       ]
     },
-    medible: "Bajar el % de rellamadas a 7 días (7D FCR) del actual a la meta del equipo; verificación presente en 9 de 10 llamadas monitoreadas.",
-    ejemplo: true
+    medible: "Auditoría visual completa y NBA abierto al inicio en 9 de 10 interacciones monitoreadas; 7D FCR y CRT hacia la meta.",
+    ejemplo: false
   },
   {
-    id: "troubleshooting-completo",
-    nombre: "Diagnóstico completo con troubleshooting estructurado",
-    metricas: ["7D FCR", "CRT"],
-    descripcion: "Seguir los pasos de diagnóstico en orden y usar la base de conocimiento para llegar a la causa del problema, no solo al síntoma.",
-    seVeBien: [
-      "Hace preguntas de sondeo antes de proponer una solución.",
-      "Sigue el flujo de troubleshooting sin saltarse pasos.",
-      "Consulta la base de conocimiento cuando el caso no es rutinario."
+    id: "tools-resources",
+    nombre: "Tools & Resources",
+    subBehaviors: [
+      "Follow the applicable troubleshooting steps to address device and/or service issues",
+      "Follow the steps in The Fix to correct a device/service issue",
+      "Open NBA at the beginning of the call/chat to gain an understanding of how you want to position the treatment",
+      "Pull up and read policy information in C2 to give correct and complete information to the customer related to their resolution",
+      "Review and communicate relevant promotions and offers available for the customer",
+      "Review Memos to understand previous calls and issues to reduce customer effort and reduce need for asking questions",
+      "Use ATLAS The Fix to send instructions - next steps - resolution guarantee",
+      "Use Grand Central to send instructions - next steps - resolution guarantee",
+      "Utilize and send (via ATLAS The Fix) Common Procedures to educate the customer about how to use their device or service",
+      "Utilize and send (via Grand Central) Common Procedures to educate the customer about how to use their device or service"
     ],
+    metricas: ["7D FCR", "CRT", "HSE", "C&A/100"],
+    descripcion: "Usar las herramientas y recursos (The Fix, C2, NBA, Memos, ATLAS, Grand Central) para dar una resolución correcta, completa y documentada.",
     preguntas: {
       goal: [
-        "¿Qué tan seguro te gustaría sentirte al diagnosticar un caso que no has visto antes?",
-        "¿Qué impacto quieres lograr en tu tiempo de resolución?"
+        "¿Qué tan seguro te gustaría sentirte de que la información que das es correcta y completa?",
+        "¿Qué impacto quieres lograr en tus rellamadas usando mejor las herramientas?"
       ],
       reality: [
-        "Cuéntame cómo empiezas el diagnóstico cuando el cliente describe el problema.",
-        "¿En qué momento decides saltarte un paso del flujo? ¿Por qué?",
-        "¿Cuándo fue la última vez que usaste la base de conocimiento? ¿Te ayudó?"
+        "Cuando llega un problema de equipo o servicio, ¿qué herramienta abres primero y por qué?",
+        "¿En qué casos sigues los pasos de The Fix completos y en cuáles te saltas alguno?",
+        "¿Cuándo fue la última vez que leíste la política en C2 antes de responder? ¿Cómo te fue?",
+        "¿Qué haces hoy para que el cliente se quede con las instrucciones y próximos pasos por escrito?"
       ],
       options: [
-        "¿Qué preguntas de sondeo podrías hacer siempre al inicio?",
-        "¿Qué te ayudaría a encontrar más rápido el artículo correcto en la base de conocimiento?"
+        "¿Qué herramienta te ahorraría más preguntas al cliente si la revisaras antes (Memos, NBA, C2)?",
+        "¿Cuándo convendría enviar instrucciones o Common Procedures por ATLAS The Fix o Grand Central?",
+        "¿Qué compañero domina estas herramientas y qué podrías aprender de él o ella?"
       ],
       way: [
-        "¿Qué tipo de caso vas a practicar primero?",
-        "¿Cómo vamos a saber en una semana si el cambio está funcionando?"
+        "¿Qué herramienta te comprometes a usar en cada llamada esta semana?",
+        "¿Cómo vamos a saber que la estás usando bien?"
       ]
     },
-    medible: "Flujo de troubleshooting completo en 9 de 10 llamadas monitoreadas; mejora de 7D FCR y CRT hacia la meta.",
-    ejemplo: true
+    medible: "Uso correcto de la herramienta acordada en 9 de 10 interacciones monitoreadas; 7D FCR hacia la meta.",
+    ejemplo: false
   },
   {
-    id: "expectativas-claras",
-    nombre: "Fijar expectativas claras y próximos pasos",
-    metricas: ["NPS", "7D FCR"],
-    descripcion: "Explicar al cliente qué va a pasar, cuándo y qué hacer si no ocurre, para que no tenga que volver a llamar.",
-    seVeBien: [
-      "Da tiempos concretos (por ejemplo, \"en 24 a 48 horas\").",
-      "Explica qué debe hacer el cliente si algo no sucede.",
-      "Confirma que el cliente entendió."
+    id: "thank-the-customer",
+    nombre: "Thank the Customer",
+    subBehaviors: [
+      "Verbalize appreciation for the customer: New accounts, tenure, military, line additions, customer effort"
     ],
-    preguntas: {
-      goal: [
-        "¿Cómo te gustaría que el cliente describiera tu llamada en la encuesta?",
-        "¿Qué quieres que el cliente sepa al colgar?"
-      ],
-      reality: [
-        "¿Cómo le explicas hoy al cliente lo que sigue después de la llamada?",
-        "¿Qué comentarios de NPS has recibido sobre claridad o tiempos?"
-      ],
-      options: [
-        "¿Cómo podrías confirmar que el cliente entendió sin que suene repetitivo?",
-        "¿Qué información le serviría al cliente tener por escrito?"
-      ],
-      way: [
-        "¿Qué tres datos vas a dar siempre al cerrar?",
-        "¿En qué llamadas vas a empezar a aplicarlo?"
-      ]
-    },
-    medible: "Próximos pasos con tiempo concreto en 9 de 10 llamadas monitoreadas; NPS hacia la meta del equipo.",
-    ejemplo: true
-  },
-  {
-    id: "empatia",
-    nombre: "Empatía y reconocimiento del impacto en el cliente",
     metricas: ["NPS"],
-    descripcion: "Reconocer cómo el problema técnico afecta al cliente y mostrar compromiso para resolverlo.",
-    seVeBien: [
-      "Reconoce la situación del cliente con sus propias palabras.",
-      "Usa un tono que transmite interés, no solo un guion.",
-      "Mantiene informado al cliente durante esperas o pruebas."
-    ],
+    descripcion: "Expresar aprecio genuino y específico al cliente (cuenta nueva, tenure, militar, líneas nuevas, esfuerzo del cliente).",
     preguntas: {
       goal: [
-        "¿Qué te gustaría que el cliente sintiera al terminar la llamada?",
-        "Si tu NPS mejorara, ¿qué sería diferente en tus llamadas?"
+        "¿Cómo te gustaría que el cliente se sintiera al terminar la llamada?",
+        "¿Qué crees que pasaría con tu NPS si cada cliente se sintiera valorado?"
       ],
       reality: [
-        "¿Cómo reaccionas cuando el cliente llega molesto por un problema que se repite?",
-        "Escuchando esta llamada, ¿en qué momento crees que el cliente se sintió escuchado? ¿Y en cuál no?"
+        "¿En qué momento de la llamada agradeces al cliente hoy?",
+        "¿Qué datos de la cuenta (tenure, militar, líneas nuevas) usas para personalizar el agradecimiento?",
+        "Escuchando esta llamada, ¿el agradecimiento sonó genuino o de guion? ¿Por qué?"
       ],
       options: [
-        "¿De qué otras maneras podrías mostrarle al cliente que entiendes su situación?",
-        "¿Qué haces cuando sientes que la llamada te está afectando a ti?"
+        "¿Cómo podrías reconocer el esfuerzo del cliente cuando ya llamó varias veces?",
+        "¿Qué frases te salen naturales para agradecer sin sonar repetitivo?"
       ],
       way: [
-        "¿Qué vas a hacer distinto en los primeros dos minutos de cada llamada?",
+        "¿Qué vas a decir distinto para agradecer a partir de la próxima llamada?",
         "¿Cómo te gustaría que te diera retroalimentación sobre esto?"
       ]
     },
-    medible: "Reconocimiento de empatía en 9 de 10 llamadas monitoreadas; NPS individual hacia la meta.",
-    ejemplo: true
+    medible: "Agradecimiento personalizado en 9 de 10 interacciones monitoreadas; NPS individual hacia la meta.",
+    ejemplo: false
   },
   {
-    id: "oferta-pago",
-    nombre: "Ofrecer y concretar el pago a clientes con saldo vencido",
-    metricas: ["Stay Connected"],
-    descripcion: "Identificar clientes con past due, explicar el saldo con claridad y concretar un pago o arreglo durante la llamada.",
-    seVeBien: [
-      "Revisa el estado de cuenta al inicio de la llamada.",
-      "Menciona el saldo con naturalidad y sin juzgar.",
-      "Ofrece opciones de pago y pide un compromiso concreto."
+    id: "set-expectations",
+    nombre: "Set Expectations",
+    subBehaviors: [
+      "Give the customer expectations for the next bill (i.e. prorated charges, estimated bill amount, location of credit applied on bill, etc.)",
+      "Give the customer the estimated time and next steps for resolution (i.e. trouble tickets, exchanges, handset refunds, text notifications, E-signature, shipping timeframes, etc.)",
+      "If you have to refer the customer to the store per C2, give them a specific location, send the store information via ATLAS The Fix, and partner with the store (as needed)",
+      "If you have to refer the customer to the store per Magenta Pulse Fetch, offer Assistance Locating the Nearest Store, give them a specific location.",
+      "Providing information and setting expectations when transferring calls (escalation, internal transfer, external transfer, etc.)"
     ],
+    metricas: ["NPS", "7D FCR"],
+    descripcion: "Explicar al cliente qué va a pasar, cuándo y qué hacer después (próxima factura, tiempos de resolución, tienda o transferencia) para que no tenga que volver a llamar.",
     preguntas: {
       goal: [
-        "¿Qué resultado te gustaría ver en tu Stay Connected este mes?",
-        "¿Cómo te gustaría sentirte cuando hablas de dinero con un cliente?"
+        "¿Qué quieres que el cliente sepa con certeza cuando cuelga?",
+        "¿Qué te gustaría que pasara con las rellamadas por dudas de factura o de seguimiento?"
       ],
       reality: [
-        "¿En qué momento de la llamada revisas si el cliente tiene saldo vencido?",
-        "¿Qué pasa por tu mente cuando tienes que mencionar el saldo?",
-        "¿Qué objeciones escuchas más y cómo respondes hoy?"
+        "¿Cómo le explicas hoy al cliente lo que verá en su próxima factura (prorrateos, monto estimado, crédito)?",
+        "Cuando abres un ticket o un cambio de equipo, ¿qué tiempos y próximos pasos le das?",
+        "Cuando refieres a tienda, ¿le das una ubicación específica? ¿Qué te lo impide a veces?",
+        "Antes de transferir, ¿qué le explicas al cliente?"
       ],
       options: [
-        "¿Cómo podrías conectar el pago con el beneficio de mantener el servicio funcionando?",
-        "¿Qué opciones de pago podrías ofrecer antes de que el cliente diga que no?"
+        "¿Cómo podrías confirmar que el cliente entendió sin que suene repetitivo?",
+        "¿Qué información le serviría tener por escrito (por ejemplo, enviada por ATLAS The Fix)?",
+        "¿Qué frase podrías usar para preparar al cliente antes de una transferencia?"
       ],
       way: [
-        "¿Qué frase vas a usar para iniciar la conversación de pago?",
-        "¿Cuántos ofrecimientos te comprometes a hacer en tu próximo turno?"
+        "¿Qué datos vas a dar siempre al cerrar la llamada?",
+        "¿En qué tipo de llamadas vas a empezar a aplicarlo?"
       ]
     },
-    medible: "Oferta de pago en el 100% de llamadas con past due; Stay Connected hacia la meta.",
-    ejemplo: true
+    medible: "Expectativas claras (tiempo y próximos pasos) en 9 de 10 interacciones monitoreadas; 7D FCR y NPS hacia la meta.",
+    ejemplo: false
   },
   {
-    id: "elegibilidad-garantia",
-    nombre: "Validar elegibilidad antes de un cambio por garantía",
-    metricas: ["HSE", "C&A/100"],
-    descripcion: "Completar el troubleshooting y validar la elegibilidad antes de procesar un cambio de equipo por garantía.",
-    seVeBien: [
-      "Agota el troubleshooting antes de ofrecer el cambio.",
-      "Valida los criterios de garantía según la política.",
-      "Documenta el motivo del cambio."
+    id: "self-help",
+    nombre: "Self Help",
+    subBehaviors: [
+      "Send links to the customer with information on how they can achieve/confirm resolution in the future through the web, IVR or phone along with the benefits (time saved, lowered effort, save on fees, etc.)",
+      "Send the ATLAS The Fix link to the customer with information on how they can achieve/confirm resolution in the future through the web, IVR or phone along with the benefits (time saved, lowered effort, save on fees, etc.)",
+      "Send the Grand Central link to the customer with information on how they can achieve/confirm resolution in the future through the web, IVR or phone along with the benefits (time saved, lowered effort, save on fees, etc.)",
+      "Show the customer how they can achieve resolution in the future through the web, IVR or phone",
+      "Show the customer how to use self-help options to avoid fees"
     ],
+    metricas: ["7D FCR", "NPS"],
+    descripcion: "Educar al cliente para que pueda resolver o confirmar por sí mismo en el futuro (web, IVR, teléfono), explicando los beneficios.",
     preguntas: {
       goal: [
-        "¿Qué te gustaría lograr con tus cambios de garantía (HSE) este mes?",
-        "¿Cómo sabrías que un cambio de equipo realmente era necesario?"
+        "¿Qué te gustaría que el cliente pudiera hacer solo la próxima vez?",
+        "¿Cómo ayudaría al cliente, y a tus rellamadas, que conozca las opciones de self help?"
       ],
       reality: [
-        "¿Cuándo decides que el equipo necesita cambio?",
-        "¿Qué haces cuando el cliente pide el cambio desde el inicio de la llamada?",
-        "¿Qué tan claros tienes los criterios de elegibilidad?"
+        "¿En qué llamadas le muestras al cliente cómo resolverlo solo? ¿En cuáles no?",
+        "¿Cómo explicas los beneficios (tiempo, esfuerzo, ahorro en cargos)?",
+        "¿Qué haces cuando el cliente dice que prefiere llamar?"
       ],
       options: [
-        "¿Qué pasos podrías confirmar siempre antes de ofrecer el cambio?",
-        "¿Cómo podrías explicarle al cliente por qué primero vamos a probar otras soluciones?"
+        "¿Qué enlace podrías enviar (ATLAS The Fix, Grand Central) en lugar de solo explicarlo?",
+        "¿Cómo podrías mostrarle el camino mientras está en línea contigo?",
+        "¿Qué beneficio le importaría más a este tipo de cliente?"
       ],
       way: [
-        "¿Qué checklist vas a usar antes de procesar un cambio?",
-        "¿Cuándo revisamos juntos tus próximos cambios?"
+        "¿En cuántas llamadas por turno te comprometes a ofrecer self help?",
+        "¿Qué enlace o frase vas a tener lista?"
       ]
     },
-    medible: "Cambios de garantía con troubleshooting completo y elegibilidad validada en 10 de 10 casos revisados; HSE hacia la meta.",
-    ejemplo: true
-  },
-  {
-    id: "creditos-politica",
-    nombre: "Aplicar créditos y ajustes según la política",
-    metricas: ["C&A/100"],
-    descripcion: "Usar créditos y ajustes solo cuando corresponde y en el monto correcto, resolviendo primero la causa del problema.",
-    seVeBien: [
-      "Resuelve la causa antes de ofrecer un crédito.",
-      "Aplica el monto que indica la política.",
-      "Explica el crédito con claridad y lo documenta."
-    ],
-    preguntas: {
-      goal: [
-        "¿Dónde te gustaría estar en C&A/100 dentro de un mes?",
-        "¿Qué significa para ti un crédito bien aplicado?"
-      ],
-      reality: [
-        "¿En qué situaciones sueles ofrecer un crédito?",
-        "¿Qué pasa cuando el cliente pide un crédito y no aplica?",
-        "¿Qué tan fácil te resulta encontrar la política de créditos durante la llamada?"
-      ],
-      options: [
-        "¿Qué otra cosa de valor le podrías ofrecer al cliente en lugar de un crédito?",
-        "¿Cómo podrías decir que no a un crédito sin afectar la experiencia?"
-      ],
-      way: [
-        "¿Qué pregunta te vas a hacer antes de aplicar un crédito?",
-        "¿Cómo vamos a dar seguimiento a tus ajustes de esta semana?"
-      ]
-    },
-    medible: "C&A/100 dentro de la meta; créditos según política en 10 de 10 casos revisados.",
-    ejemplo: true
-  },
-  {
-    id: "control-llamada",
-    nombre: "Control de la llamada y uso eficiente del tiempo",
-    metricas: ["CRT"],
-    descripcion: "Guiar la llamada hacia la resolución, minimizando esperas y silencios innecesarios.",
-    seVeBien: [
-      "Explica al cliente por qué y cuánto durará cada espera.",
-      "Trabaja en las herramientas mientras conversa.",
-      "Redirige con amabilidad cuando la conversación se desvía."
-    ],
-    preguntas: {
-      goal: [
-        "¿Qué te gustaría lograr con tu tiempo de resolución (CRT)?",
-        "¿Cómo sería una llamada bien controlada para ti?"
-      ],
-      reality: [
-        "¿En qué parte de la llamada sientes que se te va más el tiempo?",
-        "¿Cuántas veces y por cuánto tiempo pones en espera al cliente?",
-        "¿Qué haces cuando el cliente empieza a hablar de otros temas?"
-      ],
-      options: [
-        "¿Qué podrías preparar antes de poner al cliente en espera?",
-        "¿Qué atajos en las herramientas te podrían ahorrar tiempo?"
-      ],
-      way: [
-        "¿Qué cambio vas a hacer primero para reducir esperas?",
-        "¿Cómo vas a medir tu progreso esta semana?"
-      ]
-    },
-    medible: "Reducir el CRT del actual hacia la meta del equipo; esperas explicadas en 9 de 10 llamadas monitoreadas.",
-    ejemplo: true
+    medible: "Self help ofrecido con beneficio explicado en 9 de 10 interacciones aplicables; 7D FCR hacia la meta.",
+    ejemplo: false
   }
 ];

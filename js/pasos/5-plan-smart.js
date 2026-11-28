@@ -77,7 +77,8 @@
         if (!s.fechaLimite) s.fechaLimite = CC.sumarDias(CC.estado.sesion.fecha || CC.hoyISO(), 30);
         if (!s.fechaSeguimiento) s.fechaSeguimiento = CC.sumarDias(CC.estado.sesion.fecha || CC.hoyISO(), 7);
         var borrador = {
-          s: b ? "Aplicar \"" + b.nombre + "\" en todas las llamadas: " + b.seVeBien.map(minuscula).join("; ") : "",
+          s: b ? "Aplicar \"" + b.nombre + "\" en todas las llamadas: " +
+            (CC.subBehaviorActual() || (b.seVeBien || []).map(minuscula).join("; ")) : "",
           m: b ? b.medible : "",
           a: ayudas.length ? "Con apoyo de: " + ayudas.join("; ") + (est ? " (adaptado a estilo " + est.nombre.toLowerCase() + ")" : "") : "",
           r: b ? "Impacta " + b.metricas.join(", ") + (causas.length ? " y atiende la causa raíz identificada (" + causas.join(", ") + ")." : ".") : "",
@@ -137,6 +138,7 @@
       (e.sesion.representante ? " | Representante: " + e.sesion.representante : "") +
       (e.sesion.supervisor ? " | Supervisor: " + e.sesion.supervisor : ""));
     r.push("Behavior: " + (b ? b.nombre + " [" + b.metricas.join(", ") + "]" : "(sin elegir)"));
+    if (CC.subBehaviorActual()) r.push("Sub-Behavior: " + CC.subBehaviorActual());
     r.push("");
     CC.etapasGrow.forEach(function (et) {
       var notas = e.grow[et.id].notas.trim();

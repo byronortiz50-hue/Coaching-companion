@@ -14,6 +14,7 @@ window.CC = window.CC || {};
       paso: 0,
       sesion: { representante: "", supervisor: "", fecha: hoyISO() },
       behaviorId: "",
+      subBehavior: -1,      // índice del sub-behavior elegido
       grow: {
         goal: { marcadas: [], notas: "" },
         reality: { marcadas: [], notas: "" },
@@ -69,6 +70,11 @@ window.CC = window.CC || {};
       if (CC.behaviors[i].id === CC.estado.behaviorId) return CC.behaviors[i];
     }
     return null;
+  };
+  CC.subBehaviorActual = function () {
+    var b = CC.behaviorActual();
+    if (!b || !b.subBehaviors) return "";
+    return b.subBehaviors[CC.estado.subBehavior] || "";
   };
   CC.causaPorId = function (id) {
     for (var i = 0; i < CC.causasRaiz.length; i++) if (CC.causasRaiz[i].id === id) return CC.causasRaiz[i];
