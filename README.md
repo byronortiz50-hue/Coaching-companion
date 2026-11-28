@@ -43,6 +43,7 @@ datos/metricas.js          Métricas que se pueden elegir en cada sesión
 datos/preguntas-grow.js    Preguntas generales por etapa GROW
 datos/causas-raiz.js       Señales, preguntas y opciones de ayuda por causa raíz
 datos/estilos-aprendizaje.js  Estilos de aprendizaje (VARK)
+datos/recomendaciones.js  Cómo cada behavior mueve cada métrica, por qué cae la métrica según la causa raíz y acciones por estilo
 js/app.js                  Estado, guardado y navegación
 js/pasos/1-…5-*.js         Una sección por paso
 js/inicio.js               Arranque
@@ -54,4 +55,4 @@ Todo el contenido está en `datos/`. Se puede abrir con el Bloc de notas: cada a
 
 ## Estado
 
-Alpha. Incluye los 33 behaviors oficiales con sus sub-behaviors (en `datos/behaviors.js`). Cualquier behavior se puede usar con cualquier métrica: la métrica se elige en cada sesión.
+Alpha. Incluye los 33 behaviors oficiales con sus sub-behaviors (en `datos/behaviors.js`). Cualquier behavior se puede usar con cualquier métrica: la métrica se elige en cada sesión. El paso 4 arma una recomendación para la combinación behavior / sub-behavior × métrica × causa raíz × estilo de aprendizaje (`datos/recomendaciones.js`).

@@ -72,6 +72,7 @@
 
       function sugerir() {
         var est = CC.estiloPorId(CC.estado.estilo);
+        var rec = CC.recomendacion();
         var causas = CC.estado.causas.map(function (id) { var c = CC.causaPorId(id); return c ? c.nombre : id; });
         var ayudas = CC.estado.ayudas.concat(lineas(CC.estado.ayudaOtra));
         if (!s.fechaLimite) s.fechaLimite = CC.sumarDias(CC.estado.sesion.fecha || CC.hoyISO(), 30);
@@ -79,10 +80,10 @@
         var borrador = {
           s: b ? "Aplicar \"" + b.nombre + "\" en todas las llamadas: " +
             (CC.subBehaviorActual() || (b.seVeBien || []).map(minuscula).join("; ")) : "",
-          m: b ? b.medible + (CC.estado.sesion.metrica ? " Llevar " + CC.estado.sesion.metrica + " del valor actual a la meta." : "") : "",
+          m: b ? b.medible.replace(/\.$/, "") + "." + (rec.indicador ? " " + rec.indicador + " del valor actual a la meta." : "") : "",
           a: ayudas.length ? "Con apoyo de: " + ayudas.join("; ") + (est ? " (adaptado a estilo " + est.nombre.toLowerCase() + ")" : "") : "",
-          r: b ? (CC.estado.sesion.metrica ? "Mejora " + CC.estado.sesion.metrica : "Mejora la experiencia del cliente") +
-            (causas.length ? " y atiende la causa raíz identificada (" + causas.join(", ") + ")." : ".") : "",
+          r: b ? (rec.impacto ? rec.impacto.replace(/\.$/, "") : (CC.estado.sesion.metrica ? "Mejora " + CC.estado.sesion.metrica : "Mejora la experiencia del cliente")) +
+            (causas.length ? "; además atiende la causa raíz identificada (" + causas.join(", ") + ")." : ".") : "",
           t: "Aplicar desde la próxima llamada; seguimiento el " + CC.formatearFecha(s.fechaSeguimiento) + " y cierre del plan el " + CC.formatearFecha(s.fechaLimite) + "."
         };
         CRITERIOS.forEach(function (c) { if (!s[c.id].trim() && borrador[c.id]) s[c.id] = borrador[c.id]; });
@@ -141,6 +142,8 @@
     if (e.sesion.metrica) r.push("Métrica: " + e.sesion.metrica);
     r.push("Behavior: " + (b ? b.nombre : "(sin elegir)"));
     if (CC.subBehaviorActual()) r.push("Sub-Behavior: " + CC.subBehaviorActual());
+    var rec = CC.recomendacion();
+    if (rec.impacto) r.push("Cómo mueve la métrica: " + rec.impacto);
     r.push("");
     CC.etapasGrow.forEach(function (et) {
       var notas = e.grow[et.id].notas.trim();
