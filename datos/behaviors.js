@@ -4,7 +4,8 @@
  * ============================================================
  *  Behaviors y sub-behaviors oficiales, con el mismo texto en
  *  inglés que la herramienta de registro de coaching.
- *  Faltan behaviors: agrégalos al final de la lista.
+ *  Lista completa según Manuel (33). Si se crea uno nuevo, agrégalo
+ *  al final de la lista.
  *
  *  Cómo agregar uno nuevo: copia un bloque { ... }, pégalo al
  *  final de la lista (separado por coma) y cambia el texto.
@@ -1016,6 +1017,35 @@ CC.behaviors = [
       ]
     },
     medible: "Sin preguntas innecesarias y con información anticipada en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "billing-explanation-resolution",
+    nombre: "Billing Explanation & Resolution",
+    subBehaviors: [
+      "Billing Explanation & Resolution - explaining charges, resolving bill concerns"
+    ],
+    descripcion: "Explicar los cargos de la factura con claridad y resolver las inquietudes del cliente sobre su cuenta.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría que el cliente entendiera de su factura al terminar la llamada?",
+        "¿Cómo te darías cuenta de que la duda de factura quedó realmente resuelta?"
+      ],
+      reality: [
+        "¿Cómo explicas hoy un cargo que el cliente no reconoce?",
+        "¿Qué conceptos de la factura (prorrateos, cargos únicos, créditos) te cuesta más explicar?",
+        "En esta llamada, ¿el cliente quedó con alguna duda? ¿Cuál?"
+      ],
+      options: [
+        "¿Cómo podrías explicar el cargo con un ejemplo sencillo?",
+        "¿Qué herramientas o recursos podrías usar para mostrarle al cliente de dónde viene el cargo?"
+      ],
+      way: [
+        "¿Qué vas a hacer distinto en tu próxima llamada de factura?",
+        "¿Cómo vamos a revisar tu avance?"
+      ]
+    },
+    medible: "Cargos explicados y duda de factura resuelta en 9 de 10 interacciones de billing monitoreadas.",
     ejemplo: false
   }
 ];
