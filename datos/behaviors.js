@@ -13,15 +13,14 @@
  *   id            Identificador corto, sin espacios ni acentos.
  *   nombre        Nombre exacto del behavior (como en la herramienta).
  *   subBehaviors  Lista de sub-behaviors, texto exacto.
- *   metricas      Métricas en las que impacta. Una o varias de:
- *                 "NPS", "7D FCR", "Stay Connected", "CRT", "HSE",
- *                 "C&A/100".
  *   descripcion   Qué es el behavior, en una frase (español).
  *   preguntas     Preguntas de autodescubrimiento propias de este
  *                 behavior para cada etapa GROW. Se muestran antes
  *                 que las preguntas generales (datos/preguntas-grow.js).
  *                 goal / reality / options / way (Way forward).
- *   medible       Sugerencia de cómo medir el avance (plan SMART).
+ *   medible       Sugerencia de cómo medir el avance del behavior
+ *                 (plan SMART). La métrica se elige en cada sesión:
+ *                 cualquier behavior aplica a cualquier métrica.
  *   ejemplo       true = behavior de muestra (etiqueta EJEMPLO).
  *
  *  Plantilla vacía para copiar:
@@ -32,7 +31,6 @@
  *    subBehaviors: [
  *      ""
  *    ],
- *    metricas: [],
  *    descripcion: "",
  *    preguntas: { goal: [], reality: [], options: [], way: [] },
  *    medible: ""
@@ -49,12 +47,11 @@ CC.behaviors = [
       "Complete a visual audit (NBA - previous memos - tenure - usage - rate plan - balance - additional charges) to identify sales offers & adjacent issues, reduce customer effort, or (tenure - previous credits - balance - payment history) prior to negotiating a credit / payment, etc",
       "Complete a visual audit early and access NBA - be prepared to transition to the treatment"
     ],
-    metricas: ["7D FCR", "CRT", "C&A/100", "Stay Connected"],
     descripcion: "Revisar la cuenta al inicio de la interacción (NBA, memos, tenure, uso, plan, balance, cargos, créditos previos e historial de pagos) para anticipar problemas, ofertas y decisiones de crédito o pago.",
     preguntas: {
       goal: [
         "¿Qué te gustaría saber del cliente antes de que termine de explicar su problema?",
-        "Si hicieras la auditoría visual en todas tus llamadas, ¿qué cambiaría en tu tiempo de resolución y en tus rellamadas?"
+        "Si hicieras la auditoría visual en todas tus llamadas, ¿qué cambiaría en la métrica que estamos trabajando?"
       ],
       reality: [
         "Cuéntame qué revisas en la cuenta en los primeros segundos de la llamada.",
@@ -72,7 +69,7 @@ CC.behaviors = [
         "¿Cómo vas a recordar abrir NBA al inicio?"
       ]
     },
-    medible: "Auditoría visual completa y NBA abierto al inicio en 9 de 10 interacciones monitoreadas; 7D FCR y CRT hacia la meta.",
+    medible: "Auditoría visual completa y NBA abierto al inicio en 9 de 10 interacciones monitoreadas",
     ejemplo: false
   },
   {
@@ -90,7 +87,6 @@ CC.behaviors = [
       "Utilize and send (via ATLAS The Fix) Common Procedures to educate the customer about how to use their device or service",
       "Utilize and send (via Grand Central) Common Procedures to educate the customer about how to use their device or service"
     ],
-    metricas: ["7D FCR", "CRT", "HSE", "C&A/100"],
     descripcion: "Usar las herramientas y recursos (The Fix, C2, NBA, Memos, ATLAS, Grand Central) para dar una resolución correcta, completa y documentada.",
     preguntas: {
       goal: [
@@ -113,7 +109,7 @@ CC.behaviors = [
         "¿Cómo vamos a saber que la estás usando bien?"
       ]
     },
-    medible: "Uso correcto de la herramienta acordada en 9 de 10 interacciones monitoreadas; 7D FCR hacia la meta.",
+    medible: "Uso correcto de la herramienta acordada en 9 de 10 interacciones monitoreadas",
     ejemplo: false
   },
   {
@@ -122,12 +118,11 @@ CC.behaviors = [
     subBehaviors: [
       "Verbalize appreciation for the customer: New accounts, tenure, military, line additions, customer effort"
     ],
-    metricas: ["NPS"],
     descripcion: "Expresar aprecio genuino y específico al cliente (cuenta nueva, tenure, militar, líneas nuevas, esfuerzo del cliente).",
     preguntas: {
       goal: [
         "¿Cómo te gustaría que el cliente se sintiera al terminar la llamada?",
-        "¿Qué crees que pasaría con tu NPS si cada cliente se sintiera valorado?"
+        "¿Qué crees que pasaría con tus resultados si cada cliente se sintiera valorado?"
       ],
       reality: [
         "¿En qué momento de la llamada agradeces al cliente hoy?",
@@ -143,7 +138,7 @@ CC.behaviors = [
         "¿Cómo te gustaría que te diera retroalimentación sobre esto?"
       ]
     },
-    medible: "Agradecimiento personalizado en 9 de 10 interacciones monitoreadas; NPS individual hacia la meta.",
+    medible: "Agradecimiento personalizado en 9 de 10 interacciones monitoreadas",
     ejemplo: false
   },
   {
@@ -156,7 +151,6 @@ CC.behaviors = [
       "If you have to refer the customer to the store per Magenta Pulse Fetch, offer Assistance Locating the Nearest Store, give them a specific location.",
       "Providing information and setting expectations when transferring calls (escalation, internal transfer, external transfer, etc.)"
     ],
-    metricas: ["NPS", "7D FCR"],
     descripcion: "Explicar al cliente qué va a pasar, cuándo y qué hacer después (próxima factura, tiempos de resolución, tienda o transferencia) para que no tenga que volver a llamar.",
     preguntas: {
       goal: [
@@ -179,7 +173,7 @@ CC.behaviors = [
         "¿En qué tipo de llamadas vas a empezar a aplicarlo?"
       ]
     },
-    medible: "Expectativas claras (tiempo y próximos pasos) en 9 de 10 interacciones monitoreadas; 7D FCR y NPS hacia la meta.",
+    medible: "Expectativas claras (tiempo y próximos pasos) en 9 de 10 interacciones monitoreadas",
     ejemplo: false
   },
   {
@@ -192,7 +186,6 @@ CC.behaviors = [
       "Show the customer how they can achieve resolution in the future through the web, IVR or phone",
       "Show the customer how to use self-help options to avoid fees"
     ],
-    metricas: ["7D FCR", "NPS"],
     descripcion: "Educar al cliente para que pueda resolver o confirmar por sí mismo en el futuro (web, IVR, teléfono), explicando los beneficios.",
     preguntas: {
       goal: [
@@ -214,7 +207,182 @@ CC.behaviors = [
         "¿Qué enlace o frase vas a tener lista?"
       ]
     },
-    medible: "Self help ofrecido con beneficio explicado en 9 de 10 interacciones aplicables; 7D FCR hacia la meta.",
+    medible: "Self help ofrecido con beneficio explicado en 9 de 10 interacciones aplicables",
+    ejemplo: false
+  },
+  {
+    id: "save-offer",
+    nombre: "Save Offer",
+    subBehaviors: [
+      "Utilize the retention guide to demonstrate reasons to stay with T-Mobile"
+    ],
+    descripcion: "Usar la guía de retención para mostrar al cliente razones concretas para quedarse.",
+    preguntas: {
+      goal: [
+        "Cuando un cliente quiere cancelar, ¿qué te gustaría lograr en esa conversación?",
+        "¿Cómo te darías cuenta de que la oferta realmente conectó con lo que le importa al cliente?"
+      ],
+      reality: [
+        "¿En qué momento abres la guía de retención durante la llamada?",
+        "¿Qué razones para quedarse le das hoy al cliente? ¿Cómo eliges cuáles?",
+        "En esta llamada, ¿qué necesidad del cliente escuchaste antes de ofrecer algo?"
+      ],
+      options: [
+        "¿Cómo podrías conectar la oferta con lo que el cliente te contó?",
+        "¿Qué partes de la guía podrías tener listas para las objeciones más comunes?"
+      ],
+      way: [
+        "¿Qué vas a hacer distinto en tu próxima llamada de cancelación?",
+        "¿Cómo vamos a revisar juntos cómo te fue?"
+      ]
+    },
+    medible: "Guía de retención utilizada con razones personalizadas en 9 de 10 llamadas de cancelación monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "retention-escalation",
+    nombre: "Retention & Escalation Handling",
+    subBehaviors: [
+      "Retention & Escalation Handling - save offers, preventing churn"
+    ],
+    descripcion: "Manejar retenciones y escalaciones con ofertas de permanencia para evitar la pérdida del cliente (churn).",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría que pasara cuando un cliente pide escalar o cancelar?",
+        "¿Cómo te gustaría sentirte al manejar a un cliente molesto que quiere irse?"
+      ],
+      reality: [
+        "Cuéntame qué haces en los primeros momentos cuando el cliente pide un supervisor o cancelar.",
+        "¿Qué intentas antes de escalar la llamada?",
+        "¿Qué ofertas de permanencia conoces y cuándo las usas?"
+      ],
+      options: [
+        "¿Qué podrías intentar tú antes de escalar?",
+        "¿Cómo podrías calmar al cliente para que esté dispuesto a escuchar una oferta?"
+      ],
+      way: [
+        "¿Qué paso vas a agregar antes de escalar o aceptar una cancelación?",
+        "¿Qué apoyo necesitas de mí para lograrlo?"
+      ]
+    },
+    medible: "Oferta de permanencia antes de escalar o cancelar en 9 de 10 llamadas aplicables monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "restate",
+    nombre: "Restate",
+    subBehaviors: [
+      "Immediately acknowledge the customer's issue or desired resolution by restating the issue back to them in your own words"
+    ],
+    descripcion: "Reconocer de inmediato el problema o la resolución que busca el cliente, repitiéndolo con tus propias palabras.",
+    preguntas: {
+      goal: [
+        "¿Qué quieres que sienta el cliente después de explicarte su problema?",
+        "¿Qué cambiaría en la llamada si confirmaras desde el inicio lo que el cliente necesita?"
+      ],
+      reality: [
+        "¿Qué haces justo después de que el cliente termina de explicar su problema?",
+        "En esta llamada, ¿repetiste el problema con tus palabras? ¿Cómo reaccionó el cliente?",
+        "¿Te ha pasado que resuelves algo distinto a lo que el cliente quería?"
+      ],
+      options: [
+        "¿Qué frase podrías usar para repetir el problema sin sonar a guion?",
+        "¿Cómo podrías incluir también la resolución que el cliente espera?"
+      ],
+      way: [
+        "¿Cómo vas a empezar a repetir el problema en cada llamada?",
+        "¿Cómo te vas a dar cuenta de que lo estás haciendo?"
+      ]
+    },
+    medible: "Restate inmediato con palabras propias en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "relate",
+    nombre: "Relate",
+    subBehaviors: [
+      "Build relationship around T-Mobile products and services and/or Reinforce Value",
+      "Relate to the customers' frustrations/concerns without making disparaging comments about company, employees, partners, products. One Team Together!"
+    ],
+    descripcion: "Construir relación con el cliente, reforzar el valor de productos y servicios y conectar con sus frustraciones sin hablar mal de la compañía.",
+    preguntas: {
+      goal: [
+        "¿Qué tipo de conexión te gustaría lograr con el cliente?",
+        "¿Cómo te gustaría responder cuando el cliente se queja de la compañía?"
+      ],
+      reality: [
+        "¿Qué haces hoy para conectar con el cliente más allá del problema?",
+        "Cuando el cliente está frustrado, ¿qué le dices? ¿Cómo suena?",
+        "¿Te ha pasado que, por empatizar, terminas dándole la razón contra la compañía o un compañero?"
+      ],
+      options: [
+        "¿Cómo podrías mostrar que entiendes su frustración sin hablar mal de nadie?",
+        "¿Qué valor de los productos o servicios podrías resaltar según lo que usa el cliente?"
+      ],
+      way: [
+        "¿Qué frase vas a usar para conectar con un cliente frustrado?",
+        "¿En qué llamadas vas a practicarlo primero?"
+      ]
+    },
+    medible: "Conexión con el cliente sin comentarios negativos en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "recap",
+    nombre: "Recap",
+    subBehaviors: [
+      "Paraphrase how you resolved the initial call reason and adjacent issues to ensure customer is clear on the resolution while verbalizing and sending your personal guarantee for resolution"
+    ],
+    descripcion: "Resumir cómo se resolvió el motivo de la llamada y los issues adyacentes, y dar y enviar la garantía personal de resolución.",
+    preguntas: {
+      goal: [
+        "¿Qué quieres que el cliente tenga claro al colgar?",
+        "¿Cómo te gustaría cerrar tus llamadas?"
+      ],
+      reality: [
+        "¿Cómo cierras hoy una llamada después de resolver?",
+        "¿Incluyes los issues adyacentes en el resumen? ¿Por qué sí o por qué no?",
+        "¿Cuándo das y envías tu garantía personal de resolución?"
+      ],
+      options: [
+        "¿Qué estructura corta podrías usar para el recap?",
+        "¿Cómo podrías verbalizar la garantía para que suene personal y no de guion?"
+      ],
+      way: [
+        "¿Cómo vas a cerrar tus llamadas a partir de hoy?",
+        "¿Cómo vamos a revisar que el recap esté en tus llamadas?"
+      ]
+    },
+    medible: "Recap con issues adyacentes y garantía personal en 9 de 10 interacciones monitoreadas.",
+    ejemplo: false
+  },
+  {
+    id: "process-compliance",
+    nombre: "Process compliance",
+    subBehaviors: [
+      "Process Compliance - followed required steps, accuracy, security and documentation"
+    ],
+    descripcion: "Seguir los pasos requeridos con precisión, cumpliendo seguridad y documentación.",
+    preguntas: {
+      goal: [
+        "¿Qué te gustaría lograr en cumplimiento de procesos?",
+        "¿Por qué crees que es importante seguir cada paso para el cliente y para ti?"
+      ],
+      reality: [
+        "¿Qué pasos del proceso sientes que se te pasan con más frecuencia?",
+        "¿Cómo haces hoy la verificación de seguridad y la documentación?",
+        "¿Qué pasa en la llamada que hace que te saltes un paso?"
+      ],
+      options: [
+        "¿Qué te ayudaría a no olvidar los pasos requeridos?",
+        "¿Cómo podrías documentar mientras hablas con el cliente?"
+      ],
+      way: [
+        "¿Qué paso del proceso te comprometes a cuidar en cada llamada?",
+        "¿Cuándo revisamos juntos tus notas y verificaciones?"
+      ]
+    },
+    medible: "Pasos requeridos, seguridad y documentación completos en 10 de 10 interacciones revisadas.",
     ejemplo: false
   }
 ];

@@ -17,7 +17,7 @@
       var cabecera = el("section", { className: "tarjeta" }, [
         el("h2", {}, ["2. Preguntas de autodescubrimiento"]),
         b ? el("div", {}, [
-              el("p", { className: "contexto" }, ["Behavior: ", el("strong", {}, [b.nombre]), " ", CC.chipsMetricas(b.metricas)]),
+              el("p", { className: "contexto" }, ["Behavior: ", el("strong", {}, [b.nombre]), CC.estado.sesion.metrica ? " · Métrica: " + CC.estado.sesion.metrica : ""]),
               CC.subBehaviorActual() ? el("p", { className: "contexto tenue" }, ["Sub-Behavior: " + CC.subBehaviorActual()]) : null
             ])
           : el("p", { className: "alerta" }, ["Aún no elegiste un behavior. Verás solo las preguntas generales. ",

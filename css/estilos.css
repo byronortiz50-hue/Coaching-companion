@@ -78,7 +78,7 @@ p { margin: 0 0 .75em; }
 /* Campos */
 .fila-campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
 .campo { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .9rem; }
-.campo input, .campo textarea {
+.campo input, .campo textarea, .campo select {
   font: inherit; font-weight: normal; padding: 8px 10px; border: 1px solid var(--borde);
   border-radius: 8px; background: #fff; color: var(--texto); width: 100%;
 }

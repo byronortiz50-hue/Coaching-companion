@@ -38,7 +38,8 @@ El progreso se guarda como borrador en el navegador del supervisor. **No es un s
 ```
 index.html                 Página principal (solo carga las piezas)
 css/estilos.css            Estilos
-datos/behaviors.js         ← Behaviors y sus preguntas (EDITAR AQUÍ)
+datos/behaviors.js         ← Behaviors, sub-behaviors y sus preguntas (EDITAR AQUÍ)
+datos/metricas.js          Métricas que se pueden elegir en cada sesión
 datos/preguntas-grow.js    Preguntas generales por etapa GROW
 datos/causas-raiz.js       Señales, preguntas y opciones de ayuda por causa raíz
 datos/estilos-aprendizaje.js  Estilos de aprendizaje (VARK)
@@ -53,4 +54,4 @@ Todo el contenido está en `datos/`. Se puede abrir con el Bloc de notas: cada a
 
 ## Estado
 
-Alpha. Incluye los primeros 5 behaviors oficiales (Visual Audit, Tools & Resources, Thank the Customer, Set Expectations, Self Help) con sus sub-behaviors; faltan más por agregar.
+Alpha. Incluye 11 behaviors oficiales con sus sub-behaviors; se pueden agregar más en `datos/behaviors.js`. Cualquier behavior se puede usar con cualquier métrica: la métrica se elige en cada sesión.

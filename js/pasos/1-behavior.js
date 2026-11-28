@@ -21,37 +21,16 @@
         el("div", { className: "fila-campos" }, [
           campo("Representante", "text", s.representante, function (v) { s.representante = v; }, "Nombre (opcional)"),
           campo("Supervisor", "text", s.supervisor, function (v) { s.supervisor = v; }, "Nombre (opcional)"),
-          campo("Fecha", "date", s.fecha, function (v) { s.fecha = v; })
+          campo("Fecha", "date", s.fecha, function (v) { s.fecha = v; }),
+          selectorMetrica(s)
         ])
       ]));
 
-      /* Filtro por métrica */
-      var metricas = [];
-      CC.behaviors.forEach(function (b) {
-        b.metricas.forEach(function (m) { if (metricas.indexOf(m) === -1) metricas.push(m); });
-      });
-      var filtro = { valor: "" };
       var lista = el("div", { className: "lista-behaviors", role: "radiogroup", "aria-label": "Behaviors" });
-
-      var filtros = el("div", { className: "filtros" }, [el("span", { className: "etq" }, ["Filtrar por métrica:"])]);
-      ["Todas"].concat(metricas).forEach(function (m) {
-        filtros.appendChild(el("button", {
-          type: "button",
-          className: "chip chip-filtro" + (m === "Todas" ? " activo" : ""),
-          onclick: function (e) {
-            filtro.valor = m === "Todas" ? "" : m;
-            Array.prototype.forEach.call(filtros.querySelectorAll(".chip-filtro"), function (c) { c.classList.remove("activo"); });
-            e.currentTarget.classList.add("activo");
-            pintarLista();
-          }
-        }, [m]));
-      });
 
       function pintarLista() {
         lista.innerHTML = "";
-        CC.behaviors.filter(function (b) {
-          return !filtro.valor || b.metricas.indexOf(filtro.valor) !== -1;
-        }).forEach(function (b) {
+        CC.behaviors.forEach(function (b) {
           var elegido = b.id === CC.estado.behaviorId;
           lista.appendChild(el("div", { className: "behavior" + (elegido ? " elegido" : "") }, [
            el("label", { className: "behavior-cabecera" }, [
@@ -70,7 +49,6 @@
                 el("strong", {}, [b.nombre]), " ",
                 b.ejemplo ? CC.etiquetaEjemplo() : null
               ]),
-              CC.chipsMetricas(b.metricas),
               el("p", {}, [b.descripcion])
             ])
            ]),
@@ -81,7 +59,6 @@
       pintarLista();
 
       cont.appendChild(el("section", { className: "tarjeta" }, [
-        filtros,
         lista,
         el("p", { className: "nota" }, [
           "Para agregar o cambiar behaviors y sub-behaviors, edita el archivo datos/behaviors.js."
@@ -120,6 +97,17 @@
       ]);
     }
     return null;
+  }
+
+  function selectorMetrica(s) {
+    return el("label", { className: "campo" }, [
+      el("span", {}, ["Métrica a mejorar"]),
+      el("select", {
+        onchange: function (e) { s.metrica = e.target.value; CC.guardar(); }
+      }, [el("option", { value: "" }, ["(opcional)"])].concat(CC.metricas.map(function (m) {
+        return el("option", { value: m.id, selected: s.metrica === m.id }, [m.id]);
+      })))
+    ]);
   }
 
   function campo(etiqueta, tipo, valor, alCambiar, placeholder) {

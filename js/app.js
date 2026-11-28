@@ -12,7 +12,7 @@ window.CC = window.CC || {};
   CC.estadoInicial = function () {
     return {
       paso: 0,
-      sesion: { representante: "", supervisor: "", fecha: hoyISO() },
+      sesion: { representante: "", supervisor: "", fecha: hoyISO(), metrica: "" },
       behaviorId: "",
       subBehavior: -1,      // índice del sub-behavior elegido
       grow: {
