@@ -57,7 +57,7 @@
         el("p", { className: "ayuda" }, ["Cópialo y pégalo en la herramienta donde registran las sesiones de coaching."]),
         el("div", { className: "acciones" }, [
           el("button", { type: "button", className: "btn", onclick: copiar }, ["Copiar resumen"]),
-          el("button", { type: "button", className: "btn btn-sec", onclick: function () { window.print(); } }, ["Imprimir"]),
+          CC.sinImprimir ? null : el("button", { type: "button", className: "btn btn-sec", onclick: function () { window.print(); } }, ["Imprimir"]),
           el("span", { className: "aviso-copia", id: "aviso-copia", "aria-live": "polite" })
         ]),
         resumen
