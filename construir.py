@@ -22,3 +22,17 @@ html = re.sub(r'<script src="([^"]+)"></script>', js, html)
 html = html.replace("<head>", "<head>\n  <!-- Archivo generado con construir.py. Para editar, cambia los archivos de datos/ y vuelve a generarlo. -->", 1)
 (raiz / "coaching-companion.html").write_text(html, encoding="utf-8")
 print("Listo: coaching-companion.html")
+
+# Versión para publicar como artifact de Claude (el visor agrega doctype/head/body
+# y no permite imprimir).
+import sys
+if "--artifact" in sys.argv:
+    destino = Path(sys.argv[sys.argv.index("--artifact") + 1])
+    cuerpo = html
+    cuerpo = re.sub(r"<!doctype html>\s*<html[^>]*>\s*<head>", "", cuerpo, count=1, flags=re.I)
+    cuerpo = re.sub(r'<meta charset="utf-8">\s*<meta name="viewport"[^>]*>', "", cuerpo, count=1)
+    cuerpo = cuerpo.replace("</head>\n<body>", "", 1)
+    cuerpo = re.sub(r"</body>\s*</html>\s*$", "", cuerpo)
+    cuerpo = cuerpo.replace("<script>/* datos/metricas.js */", "<script>window.CC = window.CC || {}; CC.sinImprimir = true;</script>\n  <script>/* datos/metricas.js */", 1)
+    destino.write_text(cuerpo, encoding="utf-8")
+    print("Listo:", destino)
